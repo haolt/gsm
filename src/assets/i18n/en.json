@@ -9,18 +9,17 @@
       "INVALID": "is invalid"
     }
   },
-  "HOME": {
-    "DASHBOARD": {
-      "NAV": {
-        "TITLE": "Dashboard",
-        "INFO": "My information",
-        "LOGOUT": "Logout"
-      },
-      "MAIN": {
-        "ANNOUCEMENT": "ANNOUCEMENTS",
-        "REQUEST": "REQUESTS",
-        "ENTER": "SEE MORE"
-      }
+  "DASHBOARD": {
+    "NAV": {
+      "TITLE": "Dashboard",
+      "INFO": "My information",
+      "LOGOUT": "Logout"
+    },
+    "SIDEBAR": {
+      "ANNOUCEMENT": "ANNOUCEMENTS",
+      "REQUEST": "REQUESTS"
+    },
+    "UTILS": {
     }
   }
 }

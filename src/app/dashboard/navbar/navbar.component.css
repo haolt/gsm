@@ -35,6 +35,9 @@
 /* menu */
 
 .header .menu {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
   clear: both;
   max-height: 0;
   transition: max-height .2s ease-out;
@@ -110,9 +113,7 @@
 
 @media (min-width: 48em) {
   .header .menu {
-    display: inline-flex;
     max-height: none;
-    align-items: center;
   }
   .header .menu-icon {
     display: none;

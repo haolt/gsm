@@ -9,18 +9,17 @@
       "INVALID": "không hợp lệ"
     }
   },
-  "HOME": {
-    "DASHBOARD": {
-      "NAV": {
-        "TITLE": "Trang chủ",
-        "INFO": "Xem thông tin cá nhân",
-        "LOGOUT": "Đăng xuất"
-      },
-      "MAIN": {
-        "ANNOUCEMENT": "Thông báo",
-        "REQUEST": "Biểu mẫu",
-        "ENTER": "Xem thêm"
-      }
+  "DASHBOARD": {
+    "NAV": {
+      "TITLE": "Trang chủ",
+      "INFO": "Xem thông tin cá nhân",
+      "LOGOUT": "Đăng xuất"
+    },
+    "SIDEBAR": {
+      "ANNOUCEMENT": "Thông báo",
+      "REQUEST": "Biểu mẫu"
+    },
+    "UTILS": {
     }
   }
 }
