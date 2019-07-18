@@ -1,4 +1,32 @@
-<p>
-  dashboard works!
-  <router-outlet></router-outlet>
-</p>
+<app-navbar></app-navbar>
+<div id="wrapper" class="active"
+  [ngClass]="{'active': isShowSideBar === true }"
+>
+  <!-- Sidebar -->
+  <div id="sidebar-wrapper"
+    (click)="toggleSidebar()"
+  >
+    <ul class="sidebar-nav" id="sidebar">
+      <li class="sidebar__direction">
+        <img *ngIf="isShowSideBar" src="../../../assets/images/directs/dbt-right.png" alt="dbt-right"/>
+        <img *ngIf="!isShowSideBar" src="../../../assets/images/directs/dbt-left.png" alt="dbt-left"/>
+      </li>
+      <li>
+        <span>Requests</span>
+        <img src="../../../assets/images/routes/request.png" alt="request"/>
+      </li>
+      <li>
+        <span>Requests</span>
+        <img src="../../../assets/images/routes/request.png" alt="request"/>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Page content -->
+  <div id="page-content-wrapper">
+    <div class="page-content inset">
+      Content
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

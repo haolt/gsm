@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  public isShowSideBar: boolean;
 
+  constructor() { }
   ngOnInit() {
+    this.isShowSideBar = false;
   }
 
+  toggleSidebar() {
+    this.isShowSideBar = !this.isShowSideBar;
+  }
 }
