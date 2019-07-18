@@ -21,3 +21,6 @@ This is MEAN App base.
 - Step 2: `node server`
 
 View in `http://localhost:3000/`
+
+#View Demo ONLY FRONTEND
+Run `ng serve`
