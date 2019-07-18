@@ -1,0 +1,22 @@
+{
+  "LOGIN": {
+    "TITLE": "Login",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "REMEMBER_ME": "Remember me"
+  },
+  "HOME": {
+    "DASHBOARD": {
+      "NAV": {
+        "TITLE": "Dashboard",
+        "INFO": "My information",
+        "LOGOUT": "Logout"
+      },
+      "MAIN": {
+        "ANNOUCEMENT": "ANNOUCEMENTS",
+        "REQUEST": "REQUESTS",
+        "ENTER": "SEE MORE"
+      }
+    }
+  }
+}

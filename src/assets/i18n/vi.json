@@ -1,0 +1,23 @@
+{
+  "LOGIN": {
+    "TITLE": "Đăng nhập",
+    "EMAIL": "Email",
+    "PASSWORD": "Mật khẩu",
+    "REMEMBER_ME": "Ghi nhớ mật khẩu"
+  },
+  "HOME": {
+    "DASHBOARD": {
+      "NAV": {
+        "TITLE": "Trang chủ",
+        "INFO": "Xem thông tin cá nhân",
+        "LOGOUT": "Đăng xuất"
+      },
+      "MAIN": {
+        "ANNOUCEMENT": "Thông báo",
+        "REQUEST": "Biểu mẫu",
+        "ENTER": "Xem thêm"
+      }
+    }
+  }
+}
+

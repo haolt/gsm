@@ -1,0 +1,15 @@
+<!-- <div> -->
+  <!-- <h2>{{ 'HOME.TITLE' | translate }}</h2>
+  <label>
+    {{ 'HOME.LANG' | translate }}
+  </label>
+  <select name="lang" #lang
+    (change)="translate.use(lang.value)"
+  >
+    <option *ngFor="let lang of translate.getLangs()" [value]="lang">{{ lang }}</option>
+  </select>
+  <app-select-lang></app-select-lang>
+ <app-btn></app-btn>
+</div> -->
+<!-- <app-select-lang></app-select-lang> -->
+<router-outlet></router-outlet>
