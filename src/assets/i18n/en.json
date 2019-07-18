@@ -3,7 +3,11 @@
     "TITLE": "Login",
     "EMAIL": "Email",
     "PASSWORD": "Password",
-    "REMEMBER_ME": "Remember me"
+    "REMEMBER_ME": "Remember me",
+    "MESS_ERROR": {
+      "REQUIRED": "is required",
+      "INVALID": "is invalid"
+    }
   },
   "HOME": {
     "DASHBOARD": {

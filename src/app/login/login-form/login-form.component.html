@@ -11,7 +11,9 @@
         <label class="sr-only" for="inlineFormInputGroup">
           {{ 'LOGIN.EMAIL' | translate }}
         </label>
-        <div class="input-group mb-2">
+        <div class="input-group mb-2"
+          [ngClass]="{'error': loginUser.controls['email'].errors && !loginUser.controls['email'].pristine}"
+        >
           <div class="input-group-prepend">
             <div class="input-group-text">
               {{ 'LOGIN.EMAIL' | translate }}
@@ -21,12 +23,24 @@
             formControlName="email"
           />
         </div>
+        <div *ngIf="loginUser.controls['email'].errors && !loginUser.controls['email'].pristine" class="error-msg">
+          <div [hidden]="!loginUser.controls['email'].errors.required">
+            {{ 'LOGIN.EMAIL' | translate }}
+            {{ 'LOGIN.MESS_ERROR.REQUIRED' | translate }}
+          </div>
+          <div [hidden]="!loginUser.controls['email'].errors.patternInvalid">
+            {{ 'LOGIN.EMAIL' | translate }}
+            {{ 'LOGIN.MESS_ERROR.INVALID' | translate }}
+          </div>
+        </div>
       </div>
       <div class="col-auto p-0 my-4">
         <label class="sr-only" for="inlineFormInputGroup">
           {{ 'LOGIN.PASSWORD' | translate }}
         </label>
-        <div class="input-group mb-2">
+        <div class="input-group mb-2"
+          [ngClass]="{'error': loginUser.controls['password'].errors && !loginUser.controls['password'].pristine}"
+        >
           <div class="input-group-prepend">
             <div class="input-group-text">
               {{ 'LOGIN.PASSWORD' | translate }}
@@ -36,8 +50,19 @@
             formControlName="password"
           />
         </div>
+        <div *ngIf="loginUser.controls['password'].errors && !loginUser.controls['password'].pristine"
+          class="error-msg"
+        >
+          <div [hidden]="!loginUser.controls['password'].errors.required">
+            {{ 'LOGIN.PASSWORD' | translate }}
+            {{ 'LOGIN.MESS_ERROR.REQUIRED' | translate }}
+          </div>
+          <div [hidden]="!loginUser.controls['password'].errors.patternInvalid">
+              {{ 'LOGIN.PASSWORD' | translate }}
+              {{ 'LOGIN.MESS_ERROR.INVALID' | translate }}
+          </div>
+        </div>
       </div>
-      <!-- <app-select-lang></app-select-lang> -->
       <div class="col-auto col-auto-custom custom-control custom-checkbox my-1 pr-0">
         <div>
             <input type="checkbox" class="custom-control-input" id="customControlInline">

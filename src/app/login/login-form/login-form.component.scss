@@ -28,9 +28,15 @@
       text-align: center;
     }
     .col-auto-custom {
-      justify-content: space-between;
-      display: flex;
-  }
+        justify-content: space-between;
+        display: flex;
+    }
+    // .input-group.error .input-group-text {
+    //   color: red
+    // }
+    .error-msg {
+      color: #da4f4fbf;
+    }
   }
 
 }

@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    // patternValidator
+  ],
   imports: [
     CommonModule
   ],
   exports: [
-
+    // patternValidator
   ]
 })
 export class SharedModule { }

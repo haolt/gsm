@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MultilangsService } from 'src/app/multilangs/multilangs.service';
 import { TranslateService } from '@ngx-translate/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from './../login.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'src/app/core/cookie.service';
+import { patternValidator } from '../../shared/pattern-validator';
 
 @Component({
   selector: 'app-login-form',
@@ -14,10 +15,8 @@ import { CookieService } from 'src/app/core/cookie.service';
 
 export class LoginFormComponent implements OnInit {
   public curentLang: string;
-  loginUser = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl(''),
-  });
+  public defaultLoginUser = { email: '', password: ''};
+  public loginUser: FormGroup;
 
   constructor(
     private translate: TranslateService,
@@ -37,6 +36,22 @@ export class LoginFormComponent implements OnInit {
       console.log(lang);
       this.curentLang = lang;
       this.translate.use(lang);
+    });
+
+    this.loginUser = new FormGroup({
+      email: new FormControl(
+        this.defaultLoginUser.email,
+        [
+          Validators.required,
+          patternValidator(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
+        ]
+      ),
+      password: new FormControl(
+        this.defaultLoginUser.password,
+        [
+          Validators.required
+        ]
+      ),
     });
   }
   onLogin() {

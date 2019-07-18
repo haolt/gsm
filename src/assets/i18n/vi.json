@@ -3,7 +3,11 @@
     "TITLE": "Đăng nhập",
     "EMAIL": "Email",
     "PASSWORD": "Mật khẩu",
-    "REMEMBER_ME": "Ghi nhớ mật khẩu"
+    "REMEMBER_ME": "Ghi nhớ mật khẩu",
+    "MESS_ERROR": {
+      "REQUIRED": "là trường bắt buộc",
+      "INVALID": "không hợp lệ"
+    }
   },
   "HOME": {
     "DASHBOARD": {
