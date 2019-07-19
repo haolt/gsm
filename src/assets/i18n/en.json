@@ -11,15 +11,31 @@
   },
   "DASHBOARD": {
     "NAV": {
-      "TITLE": "Dashboard",
       "INFO": "My information",
       "LOGOUT": "Logout"
     },
     "SIDEBAR": {
+      "TITLE": "Dashboard",
       "ANNOUCEMENT": "ANNOUCEMENTS",
       "REQUEST": "REQUESTS"
     },
     "UTILS": {
+      "SEEMORE": "Go there"
+    },
+    "STATISTIC": {
+      "PROJECT" : "projects",
+      "CUSTOMER" : "customers",
+      "YEAR" : "years",
+      "NATION" : "NATIONS",
+      "MEMBER" : "MEMBERS"
+    },
+    "ANNOUCE": {
+      "NAME" : "Annoucements",
+      "DES": "lorem ipsum dolor sit amet consemet consectetuer adipiscing elitmet consectetuer adipiscing elitmet consectetuer adipiscing elitctetuer adipiscing elit"
+    },
+    "REQUEST": {
+      "NAME" : "Requests",
+      "DES": "lorem ipsum dolor sit amet consemet consectetuer adipiscing elitmet consectetuer adipiscing elitmet consectetuer adipiscing elitctetuer adipiscing elit"
     }
   }
 }

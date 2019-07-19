@@ -12,14 +12,14 @@ const dashboardRoutes: Routes = [
         path: '',
         component: StatisticComponent
       },
-      // {
-      //   path: 'announcements',
-      //   loadChildren: './announcement/announcement.module#AnnouncementModule'
-      // },
-      // {
-      //   path: 'requests',
-      //   loadChildren: './request/request.module#RequestModule'
-      // }
+      {
+        path: 'announces',
+        loadChildren: './announce/announce.module#AnnounceModule'
+      },
+      {
+        path: 'requests',
+        loadChildren: './request/request.module#RequestModule'
+      }
     ]
   }
 ];

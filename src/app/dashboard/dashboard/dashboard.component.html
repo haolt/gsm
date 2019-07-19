@@ -4,18 +4,31 @@
 >
   <!-- Sidebar -->
   <div id="sidebar-wrapper"
-    (click)="toggleSidebar()"
   >
     <ul class="sidebar-nav" id="sidebar">
-      <li class="sidebar__direction">
-        <img *ngIf="!isShowSideBar" src="../../../assets/images/directs/dbt-right.png" alt="dbt-right"/>
-        <img *ngIf="isShowSideBar" src="../../../assets/images/directs/dbt-left.png" alt="dbt-left"/>
+      <li class="sidebar__direction sidebar__route"
+        title="Go to dashboard"
+        (click)="goToDashboard()"
+      >
+        <span>{{ 'DASHBOARD.SIDEBAR.TITLE' | translate | titlecase }}</span>
+        <div class="toggle"
+          (click)="toggleSidebar()"
+        >
+          <img *ngIf="!isShowSideBar" src="../../../assets/images/directs/dbt-right.png" alt="dbt-right"/>
+          <img *ngIf="isShowSideBar" src="../../../assets/images/directs/dbt-left.png" alt="dbt-left"/>
+        </div>
       </li>
-      <li class="sidebar__route">
+      <li class="sidebar__route"
+        title="Go to announce"
+        (click)="goToAnnounce()"
+      >
         <span>{{ 'DASHBOARD.SIDEBAR.ANNOUCEMENT' | translate | titlecase }}</span>
         <img src="../../../assets/images/routes/request.png" alt="request"/>
       </li>
-      <li class="sidebar__route">
+      <li class="sidebar__route"
+        title="Go to request"
+        (click)="goToRequest()"
+      >
         <span>{{ 'DASHBOARD.SIDEBAR.REQUEST' | translate | titlecase }}</span>
         <img src="../../../assets/images/routes/request.png" alt="request"/>
       </li>

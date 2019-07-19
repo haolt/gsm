@@ -11,15 +11,31 @@
   },
   "DASHBOARD": {
     "NAV": {
-      "TITLE": "Trang chủ",
       "INFO": "Xem thông tin cá nhân",
       "LOGOUT": "Đăng xuất"
     },
     "SIDEBAR": {
+      "TITLE": "Trang chủ",
       "ANNOUCEMENT": "Thông báo",
       "REQUEST": "Biểu mẫu"
     },
     "UTILS": {
+      "SEEMORE": "Xem thêm"
+    },
+    "STATISTIC": {
+      "PROJECT" : "dự án",
+      "CUSTOMER" : "khách hàng",
+      "YEAR" : "năm",
+      "NATION" : "quốc gia",
+      "MEMBER" : "thành viên"
+    },
+    "ANNOUCE": {
+      "NAME" : "Thông báo",
+      "DES": "Là kênh liên lạc, trao đổi, thông báo, đóng góp ý kiến... chính thức giữa các thành viên trong công ty. Hoặc từ công ty đến các thành viên."
+    },
+    "REQUEST": {
+      "NAME" : "Mẫu yêu cầu",
+      "DES": "Là kênh liên lạc, trao đổi, thông báo, đóng góp ý kiến... chính thức giữa các thành viên trong công ty. Hoặc từ công ty đến các thành viên."
     }
   }
 }

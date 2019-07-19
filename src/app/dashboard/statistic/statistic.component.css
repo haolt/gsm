@@ -76,6 +76,20 @@
     box-shadow: 1px 1px 15px 0 rgba(0, 0, 0, 0.1);
 }
 
+.statistic {
+  cursor: pointer;
+}
+
+.statistic img {
+  transition: .2s;
+  margin-bottom: 8px;
+}
+
+.statistic:hover img {
+  transform: scale(1.2);
+  transition: .2s;
+}
+
 @media (max-width:767px) {
     .statistic-wrap {
         display: block;
@@ -94,4 +108,3 @@
       width: 50%;
   }
 }
-

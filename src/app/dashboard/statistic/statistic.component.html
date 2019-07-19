@@ -1,49 +1,59 @@
 <section class="statistic-wrap">
   <div class="statistic">
     <img class="statistic__img" src="../../../../assets/images/statistic/project.png" height="48px"  alt="statistic-icon"/>
-    <p class="statistic__title"><span>25</span>++ projects</p>
+    <p class="statistic__title"><span>25</span>++ {{ 'DASHBOARD.STATISTIC.PROJECT' | translate | lowercase }}</p>
   </div>
   <div class="statistic">
     <img class="statistic__img" src="../../../../assets/images/statistic/customer.png" height="48px"  alt="statistic-icon"/>
-    <p class="statistic__title"><span>08</span>++ customers</p>
+    <p class="statistic__title"><span>08</span>++ {{ 'DASHBOARD.STATISTIC.CUSTOMER' | translate | lowercase }}</p>
   </div>
   <div class="statistic">
     <img class="statistic__img" src="../../../../assets/images/statistic/exp.png" height="48px" alt="statistic-icon"/>
-    <p class="statistic__title"><span>05</span>++ years</p>
+    <p class="statistic__title"><span>05</span>++ {{ 'DASHBOARD.STATISTIC.YEAR' | translate | lowercase }}</p>
   </div>
   <div class="statistic">
     <img class="statistic__img" src="../../../../assets/images/statistic/nation.png" height="48px" alt="statistic-icon"/>
-    <p class="statistic__title"><span>02</span>++ nations</p>
+    <p class="statistic__title"><span>02</span>++ {{ 'DASHBOARD.STATISTIC.NATION' | translate | lowercase }}</p>
   </div>
   <div class="statistic">
     <img class="statistic__img" src="../../../../assets/images/statistic/members.png" height="48px" alt="statistic-icon"/>
-    <p class="statistic__title"><span>50</span>++ members</p>
+    <p class="statistic__title"><span>50</span>++ {{ 'DASHBOARD.STATISTIC.MEMBER' | translate | lowercase }}</p>
   </div>
 </section>
 <section class="directions">
-  <div class="direction__item annoucement">
-    <h3 class="item__title">
+  <div class="direction__item annoucement"
+  >
+    <h3 class="item__title"
+     (click)="goToAnnounce()"
+    >
       <img src="../../../../assets/images/routes/announce_card.png" alt="announce-icon"/>
-      Annoucements
+      {{ 'DASHBOARD.ANNOUCE.NAME' | translate | uppercase }}
     </h3>
     <p class="item__description">
-      Là kênh liên lạc, trao đổi, thông báo, đóng góp ý kiến... chính thức giữa các thành viên trong công ty. Hoặc từ công ty đến các thành viên.
+      {{ 'DASHBOARD.ANNOUCE.DES' | translate }}
     </p>
-    <button class="item__btn">
-      Go there
+    <button class="item__btn"
+      (click)="goToAnnounce()"
+    >
+      {{ 'DASHBOARD.UTILS.SEEMORE' | translate | uppercase }}
       <img src="../../../../assets/images/directs/next.png" width="15px"/>
     </button>
   </div>
-  <div class="direction__item request">
-    <h3 class="item__title">
+  <div class="direction__item request"
+  >
+    <h3 class="item__title"
+      (click)="goToRequest()"
+    >
       <img src="../../../../assets/images/routes/request_card.png" alt="request-icon"/>
-      Requests
+      {{ 'DASHBOARD.REQUEST.NAME' | translate | uppercase }}
     </h3>
     <p class="item__description">
-      Là kênh liên lạc, trao đổi, thông báo, đóng góp ý kiến... chính thức giữa các thành viên trong công ty. Hoặc từ công ty đến các thành viên.
+      {{ 'DASHBOARD.REQUEST.DES' | translate }}
     </p>
-    <button class="item__btn">
-      Go there
+    <button class="item__btn"
+      (click)="goToRequest()"
+    >
+      {{ 'DASHBOARD.UTILS.SEEMORE' | translate | uppercase }}
       <img src="../../../../assets/images/directs/next.png" width="15px"/>
     </button>
   </div>

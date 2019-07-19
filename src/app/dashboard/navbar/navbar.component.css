@@ -1,4 +1,7 @@
 /* header */
+.logo {
+  cursor: pointer;
+}
 
 .header {
   background-color: #fff;

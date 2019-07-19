@@ -30,6 +30,10 @@ export class NavbarComponent implements OnInit {
     );
   }
 
+  goToDashboard() {
+    this.router.navigate(['dashboard']);
+  }
+
   onLogOut() {
     this.cookieService.eraseCookie('token');
     this.router.navigate(['login']);
