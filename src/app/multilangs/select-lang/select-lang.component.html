@@ -1,5 +1,12 @@
-<select [(ngModel)]="selectedLang" name="selectedLang"
+<select class="form-control"
+  [(ngModel)]="selectedLang" name="selectedLang"
   (change)="handleChangeLang()"
 >
   <option *ngFor="let lang of allLangs" [value]="lang">{{ lang }}</option>
 </select>
+
+<!-- <select [(ngModel)]="selectedLang" name="selectedLang"
+  (change)="handleChangeLang()"
+>
+  <option *ngFor="let lang of allLangs" [value]="lang">{{ lang }}</option>
+</select> -->

@@ -6,9 +6,11 @@ import { MultilangsModule } from '../multilangs/multilangs.module';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { StatisticComponent } from './statistic/statistic.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
-  declarations: [DashboardComponent, NavbarComponent],
+  declarations: [DashboardComponent, NavbarComponent, StatisticComponent, FooterComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

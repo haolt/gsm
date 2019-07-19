@@ -8,15 +8,15 @@
   >
     <ul class="sidebar-nav" id="sidebar">
       <li class="sidebar__direction">
-        <img *ngIf="isShowSideBar" src="../../../assets/images/directs/dbt-right.png" alt="dbt-right"/>
-        <img *ngIf="!isShowSideBar" src="../../../assets/images/directs/dbt-left.png" alt="dbt-left"/>
+        <img *ngIf="!isShowSideBar" src="../../../assets/images/directs/dbt-right.png" alt="dbt-right"/>
+        <img *ngIf="isShowSideBar" src="../../../assets/images/directs/dbt-left.png" alt="dbt-left"/>
       </li>
-      <li>
-        <span>{{ 'DASHBOARD.SIDEBAR.ANNOUCEMENT' | translate }}</span>
+      <li class="sidebar__route">
+        <span>{{ 'DASHBOARD.SIDEBAR.ANNOUCEMENT' | translate | titlecase }}</span>
         <img src="../../../assets/images/routes/request.png" alt="request"/>
       </li>
-      <li>
-        <span>{{ 'DASHBOARD.SIDEBAR.REQUEST' | translate }}</span>
+      <li class="sidebar__route">
+        <span>{{ 'DASHBOARD.SIDEBAR.REQUEST' | translate | titlecase }}</span>
         <img src="../../../assets/images/routes/request.png" alt="request"/>
       </li>
     </ul>
@@ -25,8 +25,8 @@
   <!-- Page content -->
   <div id="page-content-wrapper">
     <div class="page-content inset">
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatem voluptatum nobis neque illo blanditiis aperiam atque dolore quo dignissimos quidem excepturi nisi, cumque ipsam beatae fugiat velit hic reiciendis officiis!
       <router-outlet></router-outlet>
     </div>
+    <app-footer></app-footer>
   </div>
 </div>

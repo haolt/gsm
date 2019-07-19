@@ -18,18 +18,20 @@
       </a>
     </li>
     <li class="current-user sub-menu-parent">
-      <a class="current-user__name">
+      <a class="current-user__name" title="Your information">
         <img src="https://png.pngtree.com/element_origin_min_pic/16/08/16/1957b2f8786a777.jpg"
           alt="avatar" width="45px" height="40px" class="rounded-circle"
         />
+        <span>
+          Totoro Chan
+          <!-- {{ currentUser.name | titlecase }} -->
+        </span>
       </a>
-      <!-- <ul class="current-user__information sub-menu">
-        <li><a href="#">Sub Item 1</a></li>
-         <li><a href="#">Sub Item 1</a></li>
-      </ul> -->
     </li>
     <li>
-      <a title="Logout">
+      <a title="Logout"
+        (click)="onLogOut()"
+      >
         <img src="../../../assets/images/navbar/logout.png" alt="logout"
           width="35px"
         />
