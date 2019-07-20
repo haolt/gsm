@@ -8,6 +8,8 @@ ul li a, ul li {
 }
 
 button, button:hover, button:active, button:focus,
-a, a:hover, a:active, a:focus {
+a, a:hover, a:active, a:focus,
+input, input:hover, input:active, input:focus, input.form-control:focus {
   outline: none;
+  box-shadow: none;
 }

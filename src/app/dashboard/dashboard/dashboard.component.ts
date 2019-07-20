@@ -14,14 +14,11 @@ export class DashboardComponent implements OnInit {
     private router: Router
   ) { }
   ngOnInit() {
-    this.isShowSideBar = true;
+    this.isShowSideBar = false;
   }
 
   toggleSidebar() {
     this.isShowSideBar = !this.isShowSideBar;
-  }
-  goToDashboard() {
-    this.router.navigate(['dashboard']);
   }
   goToAnnounce() {
     this.router.navigate(['dashboard', 'announces']);

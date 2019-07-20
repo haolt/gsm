@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./announce.component.css']
 })
 export class AnnounceComponent implements OnInit {
-
+  public title = 'Announcements';
+  public keywords: string;
   constructor() { }
 
   ngOnInit() {
+    this.keywords = '';
   }
-
+  getKeywords(e) {
+    this.keywords = e;
+  }
 }

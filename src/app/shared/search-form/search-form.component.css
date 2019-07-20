@@ -1,0 +1,52 @@
+.heading {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: .5em;
+}
+
+.heading h2 {
+  font-size: 1.2em;
+  flex: 4;
+  position: relative;
+}
+
+h2:after {
+  content: '';
+  height: 3px;
+  width: 50%;
+  background: #00808069;
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  left: 0;
+}
+
+.search-box {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  flex: 2;
+}
+
+.search-box input {
+  background: transparent;
+  height: 45px;
+  border: 1px solid #80808045;
+  border-radius: 35px;
+  font-size: .9em;
+  line-height: 22px;
+  width: 57%;
+  transition: .2s;
+}
+
+.search-box input:focus {
+  width: 100%;
+  transition: .2s;
+}
+.search-box img {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  width: 25px;
+  z-index: -1;
+}
