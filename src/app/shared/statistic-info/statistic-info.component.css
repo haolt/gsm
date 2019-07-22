@@ -14,8 +14,12 @@
 }
 .announce-statistic li {
   font-size: .9em;
+  margin-bottom: .7em;
 }
 .announce-statistic__number {
   font-size: 1.1em;
   font-weight: 600;
+}
+.announce-statistic__number-des {
+  margin: .7em 0;
 }

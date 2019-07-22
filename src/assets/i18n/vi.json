@@ -10,29 +10,39 @@
     }
   },
   "DASHBOARD": {
+
     "NAV": {
       "INFO": "Xem thông tin cá nhân",
       "LOGOUT": "Đăng xuất"
     },
     "SIDEBAR": {
       "TITLE": "Trang chủ",
-      "ANNOUCEMENT": "Thông báo",
+      "ANNOUNCEMENT": "Thông báo",
       "REQUEST": "Biểu mẫu"
     },
     "UTILS": {
       "SEEMORE": "Xem thêm"
     },
+
     "STATISTIC": {
+      "NAME": "Thống kê",
       "PROJECT" : "dự án",
       "CUSTOMER" : "khách hàng",
       "YEAR" : "năm",
       "NATION" : "quốc gia",
-      "MEMBER" : "thành viên"
+      "MEMBER" : "thành viên",
+      "UNIT": "bộ phận"
     },
-    "ANNOUCE": {
+
+    "ANNOUNCE": {
       "NAME" : "Thông báo",
-      "DES": "Là kênh liên lạc, trao đổi, thông báo, đóng góp ý kiến... chính thức giữa các thành viên trong công ty. Hoặc từ công ty đến các thành viên."
+      "DES": "Là kênh liên lạc, trao đổi, thông báo, đóng góp ý kiến... chính thức giữa các thành viên trong công ty. Hoặc từ công ty đến các thành viên.",
+      "CREATE": "Tạo Bài Viết",
+      "MESS": "Bạn đang nghĩ gì?",
+      "REACT": "Biểu tượng cảm xúc",
+      "SAVE": "Lưu"
     },
+
     "REQUEST": {
       "NAME" : "Mẫu yêu cầu",
       "DES": "Là kênh liên lạc, trao đổi, thông báo, đóng góp ý kiến... chính thức giữa các thành viên trong công ty. Hoặc từ công ty đến các thành viên."

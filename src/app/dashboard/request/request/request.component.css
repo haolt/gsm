@@ -1,0 +1,10 @@
+.announce {
+  padding: 1em 0;
+}
+button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin-bottom: 1.5em;
+  float: right;
+}

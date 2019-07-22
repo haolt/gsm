@@ -1,0 +1,68 @@
+<div class="card dialog p-0"  [@add_request_dialog] *ngIf="visible">
+  <div class="card-header">
+    <h3 class="card-title request-add__title">Form Request</h3>
+    <button (click)="closeModal()" aria-label="Close" class="dialog__close-btn">X</button>
+  </div>
+  <div class="card-body">
+    <div class="request__item">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" value="Totoro Chan" disabled/>
+      </div>
+      <div class="form-group">
+        <label>Staff code</label>
+        <input type="text" class="form-control" value="IT2409" disabled/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Division</label>
+      <select class="custom-select">
+        <option value="1">Design Unit</option>
+        <option value="2">Division 1</option>
+        <option value="2">Division 2</option>
+        <option value="2">Division 3</option>
+      </select>
+    </div>
+
+    <div class="request__item">
+      <div class="form-group">
+        <label for="exampleInputPassword1">Request Type</label>
+        <select class="custom-select">
+          <option value="1">In late</option>
+          <option value="1">Leave early</option>
+          <option value="1">Leave out</option>
+          <option value="1">Resign</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Checkin time</label>
+        <input type="datetime-local" class="form-control"/>
+      </div>
+      <!-- <div class="form-group">
+        <label>Checkout time</label>
+        <input type="datetime-local" class="form-control"/>
+      </div> -->
+    </div>
+
+    <label>Compensation time</label>
+    <div class="request__item">
+      <div class="form-group">
+        <label>From</label>
+        <input type="datetime-local" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label>To</label>
+        <input type="datetime-local" class="form-control"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Reason</label>
+      <textarea class="form-control"></textarea>
+    </div>
+    <div class="request__item">
+      <button type="submit" class="btn btn-light">Cancel</button>
+      <button type="submit" class="btn btn-success">Create</button>
+    </div>
+  </div>
+</div>
+<div *ngIf="visible" class="overlay" (click)="closeModal()"></div>
