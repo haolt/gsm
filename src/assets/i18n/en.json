@@ -19,7 +19,8 @@
     "SIDEBAR": {
       "TITLE": "Dashboard",
       "ANNOUNCEMENT": "ANNOUNCEMENTS",
-      "REQUEST": "REQUESTS"
+      "REQUEST": "REQUESTS",
+      "USER": "User managing"
     },
     "UTILS": {
       "SEEMORE": "Go there"
@@ -46,6 +47,11 @@
 
     "REQUEST": {
       "NAME" : "Requests",
+      "DES": "lorem ipsum dolor sit amet consemet consectetuer adipiscing elitmet consectetuer adipiscing elitmet consectetuer adipiscing elitctetuer adipiscing elit"
+    },
+
+    "USER": {
+      "NAME" : "User Management",
       "DES": "lorem ipsum dolor sit amet consemet consectetuer adipiscing elitmet consectetuer adipiscing elitmet consectetuer adipiscing elitctetuer adipiscing elit"
     }
   }

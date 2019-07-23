@@ -1,0 +1,28 @@
+.announce__title {
+  color: #333;
+  font-size: .8em;
+  margin: 0;
+  font-weight: 600;
+}
+
+.filter-form {
+  max-height: 0px;
+  overflow: hidden;
+  /* overflow-y: scroll; */
+  transition: .3s;
+}
+.filter-form.active {
+  max-height: 250px;
+  transition: .3s;
+}
+
+.top, .bottom {
+  display: flex;
+  justify-content: space-between;
+  padding: .7em 0;
+}
+
+.top input,
+.top select {
+  width: 26%;
+}

@@ -55,10 +55,10 @@ export class LoginFormComponent implements OnInit {
     });
   }
   onLogin() {
-    console.log(this.loginUser.value);
+    // console.log(this.loginUser.value);
     this.loginService.doLogin(this.loginUser.value).subscribe(
       (res) => {
-        console.log(res);
+        // console.log(res);
         this.cookieService.setCookie('token', res.token, 7);
         this.router.navigate(['dashboard']);
       },

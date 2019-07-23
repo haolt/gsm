@@ -18,7 +18,8 @@
     "SIDEBAR": {
       "TITLE": "Trang chủ",
       "ANNOUNCEMENT": "Thông báo",
-      "REQUEST": "Biểu mẫu"
+      "REQUEST": "Biểu mẫu",
+      "USER": "Thành viên"
     },
     "UTILS": {
       "SEEMORE": "Xem thêm"
@@ -45,6 +46,10 @@
 
     "REQUEST": {
       "NAME" : "Mẫu yêu cầu",
+      "DES": "Là kênh liên lạc, trao đổi, thông báo, đóng góp ý kiến... chính thức giữa các thành viên trong công ty. Hoặc từ công ty đến các thành viên."
+    },
+    "USER": {
+      "NAME" : "Quản lý người dùng",
       "DES": "Là kênh liên lạc, trao đổi, thông báo, đóng góp ý kiến... chính thức giữa các thành viên trong công ty. Hoặc từ công ty đến các thành viên."
     }
   }

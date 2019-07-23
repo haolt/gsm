@@ -1,0 +1,46 @@
+<div class="card announce">
+    <div class="card-header">
+      <div class="custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input" id="switch1"
+          (click)="showFilterForm()"
+        >
+        <label class="custom-control-label" for="switch1">Filter by fields</label>
+      </div>
+    </div>
+     <!-- [ngClass]="isShowFilterForm ? 'card-body active' : 'card-body'" -->
+    <div [ngClass]="isShowFilterForm ? 'filter-form active' : 'filter-form'">
+      <div class="card-body filter-form__inner">
+        <div class="col-left">
+          <input placeholder="Name" type="text" class="form-control"/>
+          <input placeholder="position" type="text" class="form-control"/>
+          <select class="custom-select">
+            <option value="1">All</option>
+            <option value="1">Admin</option>
+            <option value="1">Staff</option>
+          </select>
+        </div>
+        <div class="col-right division">
+          <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="du">
+            <label class="custom-control-label" for="du">Design Unit</label>
+          </div>
+          <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="div1">
+            <label class="custom-control-label" for="div1">Division 1</label>
+          </div>
+          <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="div2">
+            <label class="custom-control-label" for="div2">Division 2</label>
+          </div>
+          <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="div3">
+            <label class="custom-control-label" for="div3">Division 3</label>
+          </div>
+          <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="dr">
+            <label class="custom-control-label" for="dr">Data Research</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

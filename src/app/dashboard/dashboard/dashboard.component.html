@@ -30,6 +30,13 @@
         <span>{{ 'DASHBOARD.SIDEBAR.REQUEST' | translate | titlecase }}</span>
         <img src="../../../assets/images/routes/request_.png" alt="request"/>
       </li>
+      <li class="sidebar__route"
+        title="Go to request"
+        (click)="goToUser()"
+      >
+        <span>{{ 'DASHBOARD.SIDEBAR.USER' | translate | titlecase }}</span>
+        <img src="../../../assets/images/routes/user.png" alt="users"/>
+      </li>
     </ul>
   </div>
 

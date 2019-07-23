@@ -1,0 +1,41 @@
+<div class="custom-control custom-switch">
+  <input type="checkbox" class="custom-control-input" id="openFilterForm"
+    (click)="showFilterForm()"
+  >
+  <label class="custom-control-label" for="openFilterForm">Filter by fields</label>
+</div>
+
+<div [ngClass]="isShowFilterForm ? 'filter-form active' : 'filter-form'">
+  <div class="top">
+    <input placeholder="Name" type="text" class="form-control"
+      [(ngModel)]="name"
+      (keyup)="handleChange()"
+    />
+    <input placeholder="position" type="text" class="form-control"
+      [(ngModel)]="position"
+      (keyup)="handleChange()"
+    />
+    <select class="custom-select"
+      [(ngModel)]="role" [value]="role"
+      (change)="handleChange()"
+    >
+      <option value="all">All</option>
+      <option value="admin">Admin</option>
+      <option value="staff">Staff</option>
+    </select>
+  </div>
+  <div class="bottom">
+    <div class="custom-control custom-checkbox mb-3"
+      *ngFor="let division of allDivisions"
+    >
+      <input type="checkbox" class="custom-control-input" id="{{ division._id }}"
+        [checked]="division.isChecked"
+        (click)="onCheckDivision(division._id)"
+        (change)="handleChange()"
+      >
+      <label class="custom-control-label" for="{{ division._id }}">
+        {{ division.name }}
+      </label>
+    </div>
+  </div>
+</div>

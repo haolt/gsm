@@ -16,7 +16,7 @@ select.custom-select:focus {
   box-shadow: none;
 }
 
-select, select:focus,
-select.custom-select:focus {
+select, select:focus {
+// select.custom-select:focus {
   border-color: transparent;
 }

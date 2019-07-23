@@ -19,6 +19,14 @@ const dashboardRoutes: Routes = [
       {
         path: 'requests',
         loadChildren: './request/request.module#RequestModule'
+      },
+      {
+        path: 'users',
+        loadChildren: './user/user.module#UserModule'
+      },
+      {
+        path: 'me',
+        loadChildren: './me/me.module#MeModule'
       }
     ]
   }

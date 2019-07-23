@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { CookieService } from '../../core/cookie.service';
 import { TokenService } from '../token.service';
 import { User } from '../user.class';
+import { LocalStorageService } from 'src/app/core/local-storage.service';
+import { CurentUserService } from './../curent-user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -17,21 +19,27 @@ export class NavbarComponent implements OnInit {
   constructor(
     private cookieService: CookieService,
     private router: Router,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private curentUserService: CurentUserService
   ) { }
 
   ngOnInit() {
     const token = this.cookieService.getCookie('token');
     this.tokenService.getInfoByToken(token).subscribe(
       (data: User) => {
-        console.log(data);
         this.currentUser = data;
+        this.curentUserService.publishCurrentUser(data);
+        this.curentUserService.publishIsAdmin(data.role);
       }
     );
   }
 
   goToDashboard() {
     this.router.navigate(['dashboard']);
+  }
+
+  goToMe() {
+    this.router.navigate(['dashboard', 'me']);
   }
 
   onLogOut() {
