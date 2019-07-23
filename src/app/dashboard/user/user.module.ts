@@ -10,9 +10,10 @@ import { UserItemComponent } from './user-item/user-item.component';
 // import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { DivisionPipe } from './division.pipe';
 
 @NgModule({
-  declarations: [UserComponent, UserFilterComponent, UserItemComponent],
+  declarations: [UserComponent, UserFilterComponent, UserItemComponent, DivisionPipe],
   imports: [
     CommonModule,
     UserRoutingModule,

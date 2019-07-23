@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { DivisionService } from '../../division/division.service';
 import { CookieService } from 'src/app/core/cookie.service';
 
@@ -11,6 +11,7 @@ export class UserFilterComponent implements OnInit {
 
   public isShowFilterForm = false;
   public allDivisions: any;
+  @Output() filterConditionsEventEmitter = new EventEmitter();
   // filterConditions
   public name = '';
   public position = '';
@@ -39,12 +40,13 @@ export class UserFilterComponent implements OnInit {
   }
 
   handleChange() {
-    console.log({
+    const filterConditions = {
       name: this.name,
       position: this.position,
       divisions: this.divisions,
       role: this.role
-    });
+    };
+    this.filterConditionsEventEmitter.emit(filterConditions);
   }
 
   onCheckDivision(id) {
