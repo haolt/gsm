@@ -50,8 +50,30 @@ export class UserComponent implements OnInit {
 
   private filterUsers(conditions, [...allUsers]) {
     if (conditions) {
-      if (conditions.name !== undefined ) {
-        allUsers = allUsers.filter((user) => user.name.includes(conditions.name));
+      if (conditions.name) {
+        conditions.name = conditions.name.toLowerCase();
+        allUsers = allUsers.filter((user) => user.name.toLowerCase().includes(conditions.name));
+      }
+      if (conditions.position) {
+        conditions.position = conditions.position.toLowerCase();
+        allUsers = allUsers.filter((user) => user.position.toLowerCase().includes(conditions.position));
+      }
+      if (conditions.role) {
+        switch (conditions.role) {
+          case 'all':
+            break;
+          case 'admin':
+            allUsers = allUsers.filter((user) => user.role === 'admin');
+            break;
+          case 'staff':
+            allUsers = allUsers.filter((user) => user.role === 'staff');
+            break;
+          default:
+            break;
+        }
+      }
+      if ( conditions.divisions.length < this.allDivisions.length) {
+        allUsers = allUsers.filter((user) => conditions.divisions.indexOf(user.division) + 1);
       }
       return [...allUsers];
     }
