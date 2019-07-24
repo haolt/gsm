@@ -2,7 +2,9 @@
   <input type="checkbox" class="custom-control-input" id="openFilterForm"
     (click)="showFilterForm()"
   >
-  <label class="custom-control-label" for="openFilterForm">Filter by fields</label>
+  <label class="custom-control-label" for="openFilterForm">
+    <strong>Filter by fields</strong>
+  </label>
 </div>
 
 <div [ngClass]="isShowFilterForm ? 'filter-form active' : 'filter-form'">

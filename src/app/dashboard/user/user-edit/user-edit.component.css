@@ -1,0 +1,21 @@
+.top,.bottom, .buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons {
+  justify-content: center;
+}
+
+.buttons button {
+  margin: .5em 1em;
+}
+
+.form-group--custom {
+  margin: .25rem 0;
+  padding: 0 10px;
+}
+
+.item {
+  flex: 1;
+}

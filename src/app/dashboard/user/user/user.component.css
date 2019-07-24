@@ -1,3 +1,74 @@
-.announce {
+.user {
   padding: 1em 0;
+}
+th, td, span, select {
+  font-size: .9em;
+  color: #333;
+}
+.user-row {
+  padding: 2em 0;
+}
+
+.user-row {
+  position: relative;
+}
+
+.options {
+  /* position: absolute; */
+  bottom: 0;
+  left: 9%;
+  opacity: 0;
+  transition: .2s;
+}
+
+.user-row:hover .options {
+  opacity: 1;
+  transition: .2s;
+}
+
+.options button {
+  background: transparent;
+  border: none;
+  padding: 0 .5em;
+  font-size: .9em;
+}
+
+.options button {
+  background: transparent;
+  border: none;
+  padding: 0 .5em;
+  font-size: .9em;
+}
+
+.edit-user-btn {
+  color: #e0a800;
+}
+
+.delete-user-btn {
+  color: #e03700;
+}
+
+.editForm {
+  position: absolute;
+  left: 1em;
+  width: calc(100% - 2em);
+  background: #fff;
+  z-index: 2;
+  padding: 1em 0 .5em;
+  border: 1px solid #3336;
+  box-shadow: 2px 2px 15px grey;
+  border-radius: 2px;
+}
+
+.user-filter {
+  background: #e1e1e14a;
+  border-radius: 3px;
+  margin-bottom: .5em;
+  padding: .5em;
+}
+
+label:focus:after {
+  outline: none;
+  border: none;
+  box-shadow: none;
 }

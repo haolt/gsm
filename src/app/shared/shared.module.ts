@@ -4,11 +4,13 @@ import { FormsModule } from '@angular/forms';
 
 import { SearchFormComponent } from './search-form/search-form.component';
 import { StatisticInfoComponent } from './statistic-info/statistic-info.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
     SearchFormComponent,
-    StatisticInfoComponent
+    StatisticInfoComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,97 @@
+<form [formGroup]="editUser" class="user-edit-form"
+  (ngSubmit)="onEditUser()"
+>
+  <div class="top">
+    <div class="col-sm-3 item my-1 form-group--custom">
+      <label class="sr-only" for="id">ID</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">ID</div>
+        </div>
+        <input type="text" class="form-control" id="id" disabled
+          [value]="user._id"
+        />
+      </div>
+    </div>
+    <div class="col-sm-3 item my-1 form-group--custom">
+      <label class="sr-only" for="name">Name</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">Name</div>
+        </div>
+        <input type="text" class="form-control" id="name"
+          formControlName="name"
+        >
+      </div>
+    </div>
+    <div class="col-sm-3 item my-1 form-group--custom">
+      <label class="sr-only" for="email">Email</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">Email</div>
+        </div>
+        <input type="text" class="form-control" id="email"
+          formControlName="email"
+        >
+      </div>
+    </div>
+    <div class="col-sm-3 item my-1 form-group--custom">
+      <label class="sr-only" for="password">Password</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">Password</div>
+        </div>
+        <input type="password" class="form-control" id="password"
+        formControlName="email"
+        >
+      </div>
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="col-sm-3 item my-1 form-group--custom">
+      <label class="sr-only" for="avatar">Avatar</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">Avatar</div>
+        </div>
+        <input type="url" class="form-control" id="avatar"
+          formControlName="avatar"
+        >
+      </div>
+    </div>
+    <div class="col-sm-3 item my-1 form-group--custom">
+      <label class="sr-only" for="position">Position</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">Position</div>
+        </div>
+        <input type="text" class="form-control" id="position"
+          formControlName="position"
+        >
+      </div>
+    </div>
+    <div class="form-group item form-group--custom">
+      <label class="sr-only" for="exampleInputPassword1">Division</label>
+      <select class="custom-select"
+        formControlName="division"
+      >
+        <option *ngFor="let div of allDivisions" value="{{ div._id }}">{{ div.name }}</option>
+      </select>
+    </div>
+    <div class="form-group item form-group--custom">
+      <label class="sr-only">Role</label>
+      <select class="custom-select"
+        formControlName="role"
+      >
+        <option value="admin">Admin</option>
+        <option value="staff">Staff</option>
+      </select>
+    </div>
+  </div>
+  <div class="buttons">
+    <button class="btn btn-light cancel-btn"
+      (click)="closeEditForm()"
+    >Cancel</button>
+    <button class="btn btn-success">Save</button>
+  </div>
+</form>

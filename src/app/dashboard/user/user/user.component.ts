@@ -34,6 +34,11 @@ export class UserComponent implements OnInit {
     this.userService.getAllUsers(token).subscribe((data: User) => {
       this.allUsers = data;
       this.allUsersResult = data;
+      this.allUsersResult = this.allUsersResult.map((user) => {
+        user.hasDisplayEditForm = false;
+        return user;
+      });
+      console.log(this.allUsersResult);
     });
     this.divisionService.getAllDivisions(token).subscribe((data) => {
       this.allDivisions = data;
@@ -78,5 +83,11 @@ export class UserComponent implements OnInit {
       return [...allUsers];
     }
     return [...allUsers];
+  }
+
+  handleClickEditBtn(id) {
+    const editedUser = this.allUsersResult.filter((user) => user._id === id)[0];
+    editedUser.hasDisplayEditForm = true;
+    console.log(id);
   }
 }

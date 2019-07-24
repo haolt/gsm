@@ -26,3 +26,8 @@
 .top select {
   width: 26%;
 }
+
+label, input, select,::placeholder {
+  font-size: .9em;
+  color: #333;
+}
