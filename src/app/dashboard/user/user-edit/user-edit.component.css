@@ -9,6 +9,8 @@
 
 .buttons button {
   margin: .5em 1em;
+  background: transparent;
+  border: none;
 }
 
 .form-group--custom {

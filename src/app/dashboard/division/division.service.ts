@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { CookieService } from 'src/app/core/cookie.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,16 +10,18 @@ export class DivisionService {
 
   public API_URL: string = environment.apiUrl;
   public errStatus: string;
+  private token = this.cookieService.getCookie('token');
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private cookieService: CookieService
   ) { }
 
-  getAllDivisions(token) {
+  getAllDivisions() {
     return this.http.get(
       this.buildUrl('divisions'),
       {
-        headers: this.buildHeader(token)
+        headers: this.buildHeader(this.token)
       }
     );
   }

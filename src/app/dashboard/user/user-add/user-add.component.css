@@ -1,0 +1,75 @@
+.user-add {
+  padding: 1em 0;
+}
+
+.user-edit-form {
+  display: flex;
+}
+
+.left, .right {
+  flex: 1;
+}
+
+.user-information {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.user-information li {
+  margin: .5em 0;
+}
+
+.col-item {
+  margin: 1em 0;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+
+button {
+  margin: 0 1em;
+}
+
+.col-title {
+  color: #333;
+  font-size: .8em;
+  margin: 0;
+  font-weight: 600;
+}
+
+.card-title {
+  color: #333;
+  font-size: 1.1em;
+  margin: .5em 0;
+  font-weight: 600;
+  text-align: center;
+}
+
+.user-information li {
+  color: #33333394;
+  font-size: .9em;
+  margin: .5em 0;
+}
+
+.user-information li span {
+  margin-left: .5em;
+}
+
+.avatar {
+  text-align: center;
+}
+
+.avatar img {
+  max-height: 150px;
+  width: auto;
+}
+
+@media (max-width:767px) {
+  .user-edit-form {
+    display: block
+  }
+}

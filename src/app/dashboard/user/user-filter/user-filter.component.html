@@ -1,10 +1,15 @@
-<div class="custom-control custom-switch">
-  <input type="checkbox" class="custom-control-input" id="openFilterForm"
-    (click)="showFilterForm()"
-  >
+<div class="custom-control custom-switch user-filter__heading">
   <label class="custom-control-label" for="openFilterForm">
+    <input type="checkbox" class="custom-control-input" id="openFilterForm"
+      (click)="showFilterForm()"
+    >
     <strong>Filter by fields</strong>
   </label>
+  <button
+    (click)="goToUserAdd()"
+  >
+    <img src="../../../../assets/images/add_mem.png" alt="add-icon" width="35px"/>
+  </button>
 </div>
 
 <div [ngClass]="isShowFilterForm ? 'filter-form active' : 'filter-form'">

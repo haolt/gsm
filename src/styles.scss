@@ -20,3 +20,32 @@ select, select:focus {
 // select.custom-select:focus {
   border-color: transparent;
 }
+
+.input-group-text {
+  color: #333;
+  font-size: .9em;
+  margin: 0;
+  font-weight: 600;
+}
+
+.input-group input {
+  color: #333;
+  font-size: .9em;
+  margin: 0;
+  font-weight: 600;
+}
+
+.form-group select,
+.form-group option {
+  color: #333;
+  font-size: .9em;
+  margin: 0;
+  font-weight: 600;
+}
+
+.error-msg {
+  color: #da4f4fbf;
+  font-size: .9em;
+  margin: .5em;
+  font-weight: 600;
+}

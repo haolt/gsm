@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { DivisionService } from '../../division/division.service';
-import { CookieService } from 'src/app/core/cookie.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-filter',
@@ -19,13 +19,12 @@ export class UserFilterComponent implements OnInit {
   public role = 'all';
 
   constructor(
-    private cookieService: CookieService,
-    private divisionService: DivisionService
+    private divisionService: DivisionService,
+    private router: Router
   ) { }
 
   ngOnInit() {
-    const token = this.cookieService.getCookie('token');
-    this.divisionService.getAllDivisions(token).subscribe((data) => {
+    this.divisionService.getAllDivisions().subscribe((data) => {
       this.allDivisions = data;
       this.allDivisions = this.allDivisions.map((div) => {
         div.isChecked = true;
@@ -55,5 +54,8 @@ export class UserFilterComponent implements OnInit {
     } else {
       this.divisions.push(id);
     }
+  }
+  goToUserAdd() {
+    this.router.navigate(['dashboard', 'users', 'add']);
   }
 }

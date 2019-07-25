@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CurentUserService } from '../../curent-user.service';
 import { UserService } from '../user.service';
-import { CookieService } from 'src/app/core/cookie.service';
 import { User } from '../../user.class';
 import { DivisionService } from '../../division/division.service';
 
@@ -21,7 +20,6 @@ export class UserComponent implements OnInit {
   constructor(
     private curentUserService: CurentUserService,
     private userService: UserService,
-    private cookieService: CookieService,
     private divisionService: DivisionService
   ) { }
 
@@ -30,17 +28,17 @@ export class UserComponent implements OnInit {
     this.curentUserService.getIsAdmin().subscribe((isAdmin) => {
       this.isAdmin = isAdmin;
     });
-    const token = this.cookieService.getCookie('token');
-    this.userService.getAllUsers(token).subscribe((data: User) => {
+    this.userService.getAllUsers().subscribe((data: User) => {
       this.allUsers = data;
       this.allUsersResult = data;
       this.allUsersResult = this.allUsersResult.map((user) => {
         user.hasDisplayEditForm = false;
         return user;
       });
-      console.log(this.allUsersResult);
+      this.allUsersResult.reverse();
+      // console.log(this.allUsersResult);
     });
-    this.divisionService.getAllDivisions(token).subscribe((data) => {
+    this.divisionService.getAllDivisions().subscribe((data) => {
       this.allDivisions = data;
     });
   }
@@ -51,6 +49,7 @@ export class UserComponent implements OnInit {
   onFilter(e) {
     const filterConditions = e;
     this.allUsersResult = this.filterUsers(filterConditions, this.allUsers);
+    this.allUsersResult.reverse();
   }
 
   private filterUsers(conditions, [...allUsers]) {
@@ -88,6 +87,19 @@ export class UserComponent implements OnInit {
   handleClickEditBtn(id) {
     const editedUser = this.allUsersResult.filter((user) => user._id === id)[0];
     editedUser.hasDisplayEditForm = true;
-    console.log(id);
+    // console.log(id);
+  }
+
+  onSaveEditedUser(e) {
+    // let editedUser = this.allUsersResult.filter((user) => user._id === e._id)[0];
+    // editedUser = e;
+    console.log(e);
+    this.allUsersResult = this.allUsersResult.map((user) => {
+      if (user._id === e._id) {
+        user = e;
+      }
+      return user;
+    });
+    console.log(this.allUsersResult);
   }
 }

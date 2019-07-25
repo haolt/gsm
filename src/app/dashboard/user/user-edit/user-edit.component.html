@@ -1,5 +1,5 @@
 <form [formGroup]="editUser" class="user-edit-form"
-  (ngSubmit)="onEditUser()"
+  (ngSubmit)="saveEditUser()"
 >
   <div class="top">
     <div class="col-sm-3 item my-1 form-group--custom">
@@ -8,8 +8,8 @@
         <div class="input-group-prepend">
           <div class="input-group-text">ID</div>
         </div>
-        <input type="text" class="form-control" id="id" disabled
-          [value]="user._id"
+        <input type="text" class="form-control" id="id"
+          formControlName="id"
         />
       </div>
     </div>
@@ -23,6 +23,14 @@
           formControlName="name"
         >
       </div>
+      <div *ngIf="editUser.controls['name'].errors && !editUser.controls['name'].pristine" class="error-msg">
+        <div [hidden]="!editUser.controls['name'].errors.required">
+          This field is required
+        </div>
+        <div [hidden]="!editUser.controls['name'].errors.patternInvalid">
+          This field is invalid
+        </div>
+      </div>
     </div>
     <div class="col-sm-3 item my-1 form-group--custom">
       <label class="sr-only" for="email">Email</label>
@@ -34,6 +42,14 @@
           formControlName="email"
         >
       </div>
+      <div *ngIf="editUser.controls['email'].errors && !editUser.controls['email'].pristine" class="error-msg">
+        <div [hidden]="!editUser.controls['email'].errors.required">
+          This field is required
+        </div>
+        <div [hidden]="!editUser.controls['email'].errors.patternInvalid">
+          This field is invalid
+        </div>
+      </div>
     </div>
     <div class="col-sm-3 item my-1 form-group--custom">
       <label class="sr-only" for="password">Password</label>
@@ -42,8 +58,16 @@
           <div class="input-group-text">Password</div>
         </div>
         <input type="password" class="form-control" id="password"
-        formControlName="email"
+        formControlName="password"
         >
+      </div>
+      <div *ngIf="editUser.controls['password'].errors && !editUser.controls['password'].pristine" class="error-msg">
+        <div [hidden]="!editUser.controls['password'].errors.required">
+          This field is required
+        </div>
+        <div [hidden]="!editUser.controls['password'].errors.patternInvalid">
+          This field is invalid
+        </div>
       </div>
     </div>
   </div>
@@ -58,6 +82,14 @@
           formControlName="avatar"
         >
       </div>
+      <div *ngIf="editUser.controls['avatar'].errors && !editUser.controls['avatar'].pristine" class="error-msg">
+        <div [hidden]="!editUser.controls['avatar'].errors.required">
+          This field is required
+        </div>
+        <div [hidden]="!editUser.controls['avatar'].errors.patternInvalid">
+          This field is invalid
+        </div>
+      </div>
     </div>
     <div class="col-sm-3 item my-1 form-group--custom">
       <label class="sr-only" for="position">Position</label>
@@ -69,6 +101,14 @@
           formControlName="position"
         >
       </div>
+      <div *ngIf="editUser.controls['position'].errors && !editUser.controls['position'].pristine" class="error-msg">
+        <div [hidden]="!editUser.controls['position'].errors.required">
+          This field is required
+        </div>
+        <div [hidden]="!editUser.controls['position'].errors.patternInvalid">
+          This field is invalid
+        </div>
+      </div>
     </div>
     <div class="form-group item form-group--custom">
       <label class="sr-only" for="exampleInputPassword1">Division</label>
@@ -77,6 +117,14 @@
       >
         <option *ngFor="let div of allDivisions" value="{{ div._id }}">{{ div.name }}</option>
       </select>
+      <div *ngIf="editUser.controls['division'].errors && !editUser.controls['division'].pristine" class="error-msg">
+        <div [hidden]="!editUser.controls['division'].errors.required">
+          This field is required
+        </div>
+        <div [hidden]="!editUser.controls['division'].errors.patternInvalid">
+          This field is invalid
+        </div>
+      </div>
     </div>
     <div class="form-group item form-group--custom">
       <label class="sr-only">Role</label>
@@ -86,12 +134,28 @@
         <option value="admin">Admin</option>
         <option value="staff">Staff</option>
       </select>
+      <div *ngIf="editUser.controls['role'].errors && !editUser.controls['role'].pristine" class="error-msg">
+        <div [hidden]="!editUser.controls['role'].errors.required">
+          This field is required
+        </div>
+        <div [hidden]="!editUser.controls['role'].errors.patternInvalid">
+          This field is invalid
+        </div>
+      </div>
     </div>
   </div>
   <div class="buttons">
-    <button class="btn btn-light cancel-btn"
+    <button class="cancel-btn"
+      type="button"
       (click)="closeEditForm()"
-    >Cancel</button>
-    <button class="btn btn-success">Save</button>
+    >
+      <img width="25px" src="../../../../assets/images/btn/cancel.png" alt="cancel_icon"/>
+    </button>
+    <button class="save-btn"
+      type="submit"
+      [disabled]="editUser.invalid"
+    >
+      <img width="25px" src="../../../../assets/images/btn/save.png" alt="save_icon"/>
+    </button>
   </div>
 </form>

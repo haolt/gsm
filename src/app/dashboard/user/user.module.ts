@@ -11,9 +11,12 @@ import { FormsModule } from '@angular/forms';
 import { DivisionPipe } from './division.pipe';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserFormComponent } from './user-form/user-form.component';
+import { UserAddComponent } from './user-add/user-add.component';
+import { LayoutComponent } from './layout/layout.component';
+import { HideKeyPipe } from './hide-key.pipe';
 
 @NgModule({
-  declarations: [UserComponent, UserFilterComponent, DivisionPipe, UserEditComponent, UserFormComponent],
+  declarations: [UserComponent, UserFilterComponent, DivisionPipe, UserEditComponent, UserFormComponent, UserAddComponent, LayoutComponent, HideKeyPipe],
   imports: [
     CommonModule,
     UserRoutingModule,

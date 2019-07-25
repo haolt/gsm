@@ -31,3 +31,14 @@ label, input, select,::placeholder {
   font-size: .9em;
   color: #333;
 }
+
+.user-filter__heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+button {
+  border: none;
+  background: transparent;
+}

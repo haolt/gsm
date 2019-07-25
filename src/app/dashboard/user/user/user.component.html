@@ -32,13 +32,16 @@
                 <button class="edit-user-btn"
                   (click)="handleClickEditBtn(user._id)"
                 >
-                  Edit
+                  <img width="21px" src="../../../../assets/images/btn/edit.png" alt="edit_icon"/>
                 </button>
-                <button class="delete-user-btn">Delete</button>
+                <button class="delete-user-btn">
+                  <img width="25px" src="../../../../assets/images/btn/trash.png" alt="trash_icon"/>
+                </button>
               </div>
               <div class="editForm" *ngIf="user.hasDisplayEditForm">
-                <app-user-edit [user]="user"
-
+                <app-user-edit
+                  [user]="user"
+                  (editUserEventEmitter)="onSaveEditedUser($event)"
                 ></app-user-edit>
               </div>
             </td>
