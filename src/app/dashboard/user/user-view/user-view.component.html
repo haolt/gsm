@@ -1,0 +1,43 @@
+<app-search-form [title]="title">
+</app-search-form>
+<div class="user-view">
+  <div class="results"
+    *ngIf="user !== null; else No_user_valid"
+  >
+  <div class="row">
+      <div class="col-md-7">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="col-title">Detailed user</h3>
+          </div>
+          <div class="card-body user-preview">
+            <div class="user-preview__avatar">
+              <img src="{{ user?.avatar }}" alt="avatar" class="rounded-circle"/>
+            </div>
+            <div class="user-preview__infor">
+              <h5 class="card-title">{{ user?.name }}</h5>
+              <ul class="user-information">
+                <li>Email:<span>{{ user?.email }}</span> </li>
+                <li>Position:<span>{{ user?.position }}</span></li>
+                <li>Division:<span>{{ user?.division | division }}</span></li>
+                <li>Role:<span>{{ user?.role }}</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <app-user-related [exceptId]="user?._id"></app-user-related>
+      </div>
+    </div>
+  </div>
+  <ng-template #No_user_valid>
+    <div class="row">
+      <div class="col-md-12">
+        <p>
+          Opp ! No user found
+        </p>
+      </div>
+    </div>
+  </ng-template>
+</div>

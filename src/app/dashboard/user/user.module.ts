@@ -15,9 +15,23 @@ import { UserAddComponent } from './user-add/user-add.component';
 import { LayoutComponent } from './layout/layout.component';
 import { HideKeyPipe } from './hide-key.pipe';
 import { UserDeleteComponent } from './user-delete/user-delete.component';
+import { UserViewComponent } from './user-view/user-view.component';
+import { UserRelatedComponent } from './user-related/user-related.component';
 
 @NgModule({
-  declarations: [UserComponent, UserFilterComponent, DivisionPipe, UserEditComponent, UserFormComponent, UserAddComponent, LayoutComponent, HideKeyPipe, UserDeleteComponent],
+  declarations: [
+    UserComponent,
+    UserFilterComponent,
+    DivisionPipe,
+    UserEditComponent,
+    UserFormComponent,
+    UserAddComponent,
+    LayoutComponent,
+    HideKeyPipe,
+    UserDeleteComponent,
+    UserViewComponent,
+    UserRelatedComponent
+  ],
   imports: [
     CommonModule,
     UserRoutingModule,

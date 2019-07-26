@@ -77,6 +77,15 @@ export class UserService {
     );
   }
 
+  getAUser(id) {
+    return this.http.get(
+      this.buildUrl('users/' + id ),
+      {
+        headers: this.buildHeader(this.token)
+      }
+    );
+  }
+
   handleError(err) {
     if (err.error instanceof Error) {
         console.log(`Client side Error: ${ err.error.message }`);

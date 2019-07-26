@@ -73,10 +73,6 @@ export class UserAddComponent implements OnInit {
     });
   }
 
-  getKeywords(e) {
-    console.log(e);
-  }
-
   onAddUser() {
     // console.log(this.addUser.value);
     this.userService.addAUser(this.addUser.value).subscribe((data) => {

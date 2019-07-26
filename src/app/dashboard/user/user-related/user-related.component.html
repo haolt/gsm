@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="card-header">
+    <h3 class="col-title">Related Users</h3>
+  </div>
+  <div class="card-body user-relalted">
+    <a *ngFor="let relatedUser of relatedUsers"
+      class="related-users__item"
+      title="{{ relatedUser?.name }}"
+      [routerLink]="['/dashboard/users', relatedUser?._id]"
+    >
+      <img class="rounded-circle" src="{{ relatedUser?.avatar }}" alt="avatar" height="70px"/>
+    </a>
+    <a class="related-users__item related-users__item--last"
+      title="See more here"
+      [routerLink]="['/dashboard', 'users']"
+    >
+      <!-- <img class="rounded-circle" src="https://cdn0.iconfinder.com/data/icons/avatar-profile/452/pikachu_pokemon_profile_avatar_people-512.png" alt="avatar" height="70px"/> -->
+      <img src="../../../../assets/images/tridot.png" alt="avatar" height="35px"/>
+    </a>
+  </div>
+</div>

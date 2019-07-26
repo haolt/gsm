@@ -3,6 +3,7 @@ import { CurentUserService } from '../../curent-user.service';
 import { UserService } from '../user.service';
 import { User } from '../../user.class';
 import { DivisionService } from '../../division/division.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -17,6 +18,7 @@ export class UserComponent implements OnInit {
   public allDivisions: any;
 
   constructor(
+    private router: Router,
     private curentUserService: CurentUserService,
     private userService: UserService,
     private divisionService: DivisionService
@@ -108,7 +110,10 @@ export class UserComponent implements OnInit {
     if (hasDelete) {
       this.allUsersResult = this.allUsersResult.filter((user) => user._id !== id);
     }
-    // console.log(id, hasDelete);
-
   }
+
+  handleClickViewBtn(id) {
+    this.router.navigate(['/dashboard/users', id]);
+  }
+
 }

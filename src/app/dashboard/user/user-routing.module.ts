@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { UserComponent } from './user/user.component';
 import { UserAddComponent } from './user-add/user-add.component';
 import { LayoutComponent } from './layout/layout.component';
+import { UserViewComponent } from './user-view/user-view.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,11 @@ const routes: Routes = [
       {
         path: 'add',
         component: UserAddComponent
+      },
+      {
+        path: ':id',
+        component: UserViewComponent,
+        pathMatch: 'full'
       }
     ]
   }

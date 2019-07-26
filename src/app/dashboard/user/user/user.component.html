@@ -1,7 +1,6 @@
 <app-search-form [title]="title">
 </app-search-form>
 <div class="user">
-  {{ keywords }}
   <div class="row">
     <div class="col-md-12">
       <div class="user-filter">
@@ -28,6 +27,11 @@
                 {{ user.name }}
               </strong>
               <div class="options" *ngIf="isAdmin">
+                <button class="edit-user-btn"
+                  (click)="handleClickViewBtn(user._id)"
+                >
+                  <img width="25px" src="../../../../assets/images/btn/preview.png" alt="preview_icon"/>
+                </button>
                 <button class="edit-user-btn"
                   (click)="handleClickEditBtn(user._id)"
                 >

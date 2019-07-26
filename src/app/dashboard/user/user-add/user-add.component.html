@@ -1,5 +1,4 @@
-<app-search-form [title]="title"
-  (getKeywordsEventEmitter)="getKeywords($event)">
+<app-search-form [title]="title">
 </app-search-form>
 <div class="user-add">
   <div class="row">
@@ -103,7 +102,7 @@
                       (click)="onClickRePassword()"
                     />
                   </div>
-                  <div *ngIf="re_password.value.length > 0" class="error-msg"
+                  <div *ngIf="re_password.value.length !== 0" class="error-msg"
                     [ngStyle]="{'color': isSuccessfullyConfirmPassword ? '#008000bd' : '#da4f4fbf' }"
                   >
                     {{ isSuccessfullyConfirmPassword ?
