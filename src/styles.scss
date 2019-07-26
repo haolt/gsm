@@ -36,7 +36,10 @@ select, select:focus {
 }
 
 .form-group select,
-.form-group option {
+.form-group option,
+.col-auto label,
+select.form-control,
+option {
   color: #333;
   font-size: .9em;
   margin: 0;
@@ -48,4 +51,8 @@ select, select:focus {
   font-size: .9em;
   margin: .5em;
   font-weight: 600;
+}
+
+.col-auto {
+  align-items: baseline;
 }

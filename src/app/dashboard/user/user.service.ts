@@ -68,6 +68,15 @@ export class UserService {
     );
   }
 
+  deleteAUser(id) {
+    return this.http.delete(
+      this.buildUrl('users/' + id ),
+      {
+        headers: this.buildHeader(this.token)
+      }
+    );
+  }
+
   handleError(err) {
     if (err.error instanceof Error) {
         console.log(`Client side Error: ${ err.error.message }`);

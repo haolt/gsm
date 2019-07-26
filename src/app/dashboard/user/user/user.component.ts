@@ -11,7 +11,6 @@ import { DivisionService } from '../../division/division.service';
 })
 export class UserComponent implements OnInit {
   public title = 'User Managing';
-  public keywords: string;
   public isAdmin: boolean;
   public allUsers: any;
   public allUsersResult: any;
@@ -24,7 +23,6 @@ export class UserComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.keywords = '';
     this.curentUserService.getIsAdmin().subscribe((isAdmin) => {
       this.isAdmin = isAdmin;
     });
@@ -32,6 +30,7 @@ export class UserComponent implements OnInit {
       this.allUsers = data;
       this.allUsersResult = data;
       this.allUsersResult = this.allUsersResult.map((user) => {
+        user.hasDisplayDeleteForm = false;
         user.hasDisplayEditForm = false;
         return user;
       });
@@ -41,9 +40,6 @@ export class UserComponent implements OnInit {
     this.divisionService.getAllDivisions().subscribe((data) => {
       this.allDivisions = data;
     });
-  }
-  getKeywords(e) {
-    this.keywords = e;
   }
 
   onFilter(e) {
@@ -90,16 +86,29 @@ export class UserComponent implements OnInit {
     // console.log(id);
   }
 
+  handleClickDeleteBtn(id) {
+    const deletedUser = this.allUsersResult.filter((user) => user._id === id)[0];
+    deletedUser.hasDisplayDeleteForm = true;
+  }
+
   onSaveEditedUser(e) {
-    // let editedUser = this.allUsersResult.filter((user) => user._id === e._id)[0];
-    // editedUser = e;
-    console.log(e);
     this.allUsersResult = this.allUsersResult.map((user) => {
       if (user._id === e._id) {
         user = e;
       }
       return user;
     });
-    console.log(this.allUsersResult);
+  }
+
+  onCloseModal({id, hasDelete}) {
+    const deletedUser = this.allUsersResult.filter((user) => user._id === id)[0];
+    if (deletedUser ) {
+      deletedUser.hasDisplayDeleteForm = false;
+    }
+    if (hasDelete) {
+      this.allUsersResult = this.allUsersResult.filter((user) => user._id !== id);
+    }
+    // console.log(id, hasDelete);
+
   }
 }

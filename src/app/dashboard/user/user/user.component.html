@@ -1,5 +1,4 @@
-<app-search-form [title]="title"
-  (getKeywordsEventEmitter)="getKeywords($event)">
+<app-search-form [title]="title">
 </app-search-form>
 <div class="user">
   {{ keywords }}
@@ -34,9 +33,18 @@
                 >
                   <img width="21px" src="../../../../assets/images/btn/edit.png" alt="edit_icon"/>
                 </button>
-                <button class="delete-user-btn">
+                <button class="delete-user-btn"
+                  (click)="handleClickDeleteBtn(user._id);"
+                >
                   <img width="25px" src="../../../../assets/images/btn/trash.png" alt="trash_icon"/>
                 </button>
+              </div>
+              <div class="deleteForm" *ngIf="user.hasDisplayDeleteForm">
+                <app-modal [(visible)]="user.hasDisplayDeleteForm">
+                  <app-user-delete [user]="user"
+                    (closeFormEventEmitter)="onCloseModal($event)"
+                  ></app-user-delete>
+                </app-modal>
               </div>
               <div class="editForm" *ngIf="user.hasDisplayEditForm">
                 <app-user-edit

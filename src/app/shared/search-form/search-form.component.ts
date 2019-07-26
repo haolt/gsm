@@ -6,16 +6,16 @@ import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
   styleUrls: ['./search-form.component.css']
 })
 export class SearchFormComponent implements OnInit {
-  public keywords: string;
+  // public keywords: string;
   @Input() title: string;
-  @Output() getKeywordsEventEmitter = new EventEmitter();
+  // @Output() getKeywordsEventEmitter = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
-    this.keywords = '';
+    // this.keywords = '';
   }
-  getKeywords() {
-    this.getKeywordsEventEmitter.emit(this.keywords);
-  }
+  // getKeywords() {
+  //   this.getKeywordsEventEmitter.emit(this.keywords);
+  // }
 }

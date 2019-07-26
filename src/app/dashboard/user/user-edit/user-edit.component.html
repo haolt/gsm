@@ -145,17 +145,19 @@
     </div>
   </div>
   <div class="buttons">
-    <button class="cancel-btn"
+    <button class="btn btn-light cancel-btn"
       type="button"
       (click)="closeEditForm()"
     >
       <img width="25px" src="../../../../assets/images/btn/cancel.png" alt="cancel_icon"/>
+      Cancel
     </button>
-    <button class="save-btn"
+    <button class="btn btn-success save-btn"
       type="submit"
       [disabled]="editUser.invalid"
     >
       <img width="25px" src="../../../../assets/images/btn/save.png" alt="save_icon"/>
+      Save
     </button>
   </div>
 </form>

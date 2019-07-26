@@ -7,11 +7,11 @@
   justify-content: center;
 }
 
-.buttons button {
+/* .buttons button {
   margin: .5em 1em;
   background: transparent;
   border: none;
-}
+} */
 
 .form-group--custom {
   margin: .25rem 0;

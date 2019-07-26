@@ -94,9 +94,14 @@ export class UserEditComponent implements OnInit {
     // console.log('sau khi sửa: ', this.editUser.value);
     this.editUser.value.id = this.user._id;
     this.userService.updateAUser(this.editUser.value)
-    .subscribe((data) => {
+    .subscribe(
+      (data) => {
       this.editUserEventEmitter.emit(data);
       this.closeEditForm();
-    });
+      },
+      error => {
+        this.userService.handleError(error);
+      }
+    );
   }
 }

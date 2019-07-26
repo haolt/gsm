@@ -7,13 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnnounceComponent implements OnInit {
   public title = 'Announcements';
-  public keywords: string;
   constructor() { }
 
   ngOnInit() {
-    this.keywords = '';
-  }
-  getKeywords(e) {
-    this.keywords = e;
   }
 }

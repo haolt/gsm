@@ -80,7 +80,6 @@ export class UserAddComponent implements OnInit {
   onAddUser() {
     // console.log(this.addUser.value);
     this.userService.addAUser(this.addUser.value).subscribe((data) => {
-      console.log('Thành công :v');
       this.backToUserManager();
     });
   }

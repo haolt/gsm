@@ -18,7 +18,8 @@ import { ModalComponent } from './modal/modal.component';
   ],
   exports: [
     SearchFormComponent,
-    StatisticInfoComponent
+    StatisticInfoComponent,
+    ModalComponent
   ]
 })
 export class SharedModule { }
