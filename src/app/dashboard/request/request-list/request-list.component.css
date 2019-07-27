@@ -1,6 +1,5 @@
-.announce__title{
-  color: #333;
-  font-size: .8em;
-  margin: 0;
-  font-weight: 600;
+.table.request-list thead th,
+.table.request-list tbody td {
+  vertical-align: middle;
+  border-bottom: 2px solid #dee2e6;
 }

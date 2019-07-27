@@ -4,65 +4,82 @@
     <button (click)="closeModal()" aria-label="Close" class="dialog__close-btn">X</button>
   </div>
   <div class="card-body">
-    <div class="request__item">
-      <div class="form-group">
-        <label>Name</label>
-        <input type="text" class="form-control" value="Totoro Chan" disabled/>
+    <form [formGroup]="addRequest"
+      (ngSubmit)="onAddRequest()"
+    >
+      <div class="request__item">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" class="form-control"
+            formControlName="name"
+          />
+        </div>
+        <div class="form-group">
+          <label>Staff code</label>
+          <input type="text" class="form-control"
+            formControlName="id"
+          />
+        </div>
       </div>
-      <div class="form-group">
-        <label>Staff code</label>
-        <input type="text" class="form-control" value="IT2409" disabled/>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Division</label>
-      <select class="custom-select">
-        <option value="1">Design Unit</option>
-        <option value="2">Division 1</option>
-        <option value="2">Division 2</option>
-        <option value="2">Division 3</option>
-      </select>
-    </div>
 
-    <div class="request__item">
-      <div class="form-group">
-        <label for="exampleInputPassword1">Request Type</label>
-        <select class="custom-select">
-          <option value="1">In late</option>
-          <option value="1">Leave early</option>
-          <option value="1">Leave out</option>
-          <option value="1">Resign</option>
-        </select>
+      <div class="request__item">
+        <div class="form-group">
+          <label for="exampleInputPassword1">Request Type</label>
+          <select class="custom-select"
+            formControlName="type"
+          >
+            <option value="in_late">In late</option>
+            <option value="leave_early">Leave early</option>
+            <option value="off">Off</option>
+            <option value="resign">Resign</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Check time</label>
+          <input type="datetime-local" class="form-control"
+            formControlName="checkTime"
+          />
+        </div>
       </div>
-      <div class="form-group">
-        <label>Checkin time</label>
-        <input type="datetime-local" class="form-control"/>
-      </div>
-      <!-- <div class="form-group">
-        <label>Checkout time</label>
-        <input type="datetime-local" class="form-control"/>
-      </div> -->
-    </div>
 
-    <label>Compensation time</label>
-    <div class="request__item">
-      <div class="form-group">
-        <label>From</label>
-        <input type="datetime-local" class="form-control"/>
+      <label>Compensation time</label>
+      <div class="request__item">
+        <div class="form-group">
+          <label>From</label>
+          <input type="datetime-local" class="form-control"
+            formControlName="compensationFromTime"
+          />
+        <!-- <input id="party" type="datetime-local" name="partydate" min="2017-06-01T08:30" max="2017-07-30T16:30"> -->
+        </div>
+        <div class="form-group">
+          <label>To</label>
+          <input type="datetime-local" class="form-control"
+            formControlName="compensationToTime"
+          />
+        </div>
       </div>
       <div class="form-group">
-        <label>To</label>
-        <input type="datetime-local" class="form-control"/>
+        <label>Reason</label>
+        <textarea class="form-control"
+          formControlName="reason"
+        ></textarea>
+        <div *ngIf="addRequest.controls['reason'].errors && !addRequest.controls['reason'].pristine" class="error-msg">
+          <div [hidden]="!addRequest.controls['reason'].errors.required">
+            This field is required
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label>Reason</label>
-      <textarea class="form-control"></textarea>
-    </div>
-    <div class="request__item">
-      <button type="submit" class="btn btn-light">Cancel</button>
-      <button type="submit" class="btn btn-success">Create</button>
-    </div>
+      <div class="request__item">
+        <button type="button" class="btn btn-light"
+          (click)="closeModal()"
+        >Cancel</button>
+        <button type="submit" class="btn btn-success"
+          [disabled]="addRequest.invalid"
+        >
+          Create
+        </button>
+      </div>
+    </form>
   </div>
 </div>
 <div *ngIf="visible" class="overlay" (click)="closeModal()"></div>

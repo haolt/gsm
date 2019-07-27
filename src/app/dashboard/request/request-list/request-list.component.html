@@ -1,7 +1,7 @@
-<table class="table table-striped table-bordered table-hover">
+<table class="table table-striped table-bordered table-hover request-list">
   <thead>
     <tr>
-      <th scope="col">
+      <th scope="col" rowSpan="2">
         <div class="col-auto p-0">
           <div class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" id="customControlAutosizing"/>
@@ -9,75 +9,50 @@
           </div>
         </div>
       </th>
-      <th scope="col">Type</th>
-      <th scope="col">Time</th>
-      <th scope="col">Create by</th>
-      <th scope="col">Status</th>
+      <th scope="col" rowSpan="2">Name</th>
+      <th scope="col" rowSpan="2">Created at</th>
+      <th scope="col" rowSpan="2">Type</th>
+      <th scope="col" rowSpan="2">Time Request</th>
+      <th scope="col" rowSpan="2">Reason</th>
+      <th scope="col" colSpan="2">COMPENSATION</th>
+      <th scope="col" rowSpan="2">Status</th>
+    </tr>
+    <tr>
+      <th>From</th>
+      <th>To</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr *ngFor="let request of allRequests; let i = index">
       <th scope="row">
         <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="customControlAutosizing"/>
-          <label class="custom-control-label" for="customControlAutosizing"> 1</label>
+          <input type="checkbox" class="custom-control-input" id="{{ request._id }}"
+            [checked]="request.hasChecked"
+          />
+          <label class="custom-control-label" for="{{ request._id }}">{{ i + 1 }}</label>
         </div>
       </th>
-      <td>In late</td>
-      <td>25/03/2019 09:58AM</td>
-      <td>
-        <img src="http://cdn.trochoiviet.com/wp-content/uploads/2016/08/pikachu.jpg"
+      <td>{{ request.createdBy }}
+        <!-- <img src="http://cdn.trochoiviet.com/wp-content/uploads/2016/08/pikachu.jpg"
           alt="avatar" width="35px" height="30px" class="rounded-circle"
         />
-        Pika cheww
+        Pika cheww -->
       </td>
+      <td>{{ request.createdAt }}</td>
+      <td>{{ request.type }}</td>
+      <td>{{ request.checkTime }}</td>
+      <td>{{ request.reason }}</td>
+      <td>{{ request.compensationFromTime }}</td>
+      <td>{{ request.compensationToTime }}</td>
       <td>
-        <select class="custom-select">
-          <option value="1">Pending</option>
-          <option value="1">Approve</option>
-          <option value="1">Reject</option>
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="customControlAutosizing"/>
-          <label class="custom-control-label" for="customControlAutosizing"> 2</label>
-        </div>
-      </th>
-      <td>Leave early</td>
-      <td>25/03/2019 09:58AM</td>
-      <td>
-        <img _ngcontent-umi-c10="" alt="avatar" class="rounded-circle" height="30px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJJid8RZ0yEGmGz3vYcB0m2AOPG1Umk1SkRFw_Gruiz5tEENT4" width="35px"/>
-        Doraemon Kun
-      </td>
-      <td>
-        <select class="custom-select" disabled>
-          <option value="1">Reject</option>
-          <option value="1">Pending</option>
-          <option value="1">Approve</option>
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="customControlAutosizing"/>
-          <label class="custom-control-label" for="customControlAutosizing"> 3</label>
-        </div>
-      </th>
-      <td>In late</td>
-      <td>25/03/2019 09:58AM</td>
-      <td>
-        <img src="https://avatarfiles.alphacoders.com/643/thumb-64385.png" class="rounded-circle" alt="avatar" height="30px"/>
-        Hao Chan
-      </td>
-      <td>
-        <select class="custom-select">
-          <option value="1">Approve</option>
-          <option value="1">Reject</option>
-          <option value="1">Pending</option>
+        <select class="custom-select"
+          [value]="request.status"
+          [disabled]="!isAdmin"
+        >
+        <!-- (change)="ChangingValue($event)" -->
+          <option value="pending">Pending</option>
+          <option value="approved">Approve</option>
+          <option value="rejected">Reject</option>
         </select>
       </td>
     </tr>

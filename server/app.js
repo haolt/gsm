@@ -17,8 +17,8 @@ app.use('/divisions', DivisionController);
 var RequestController = require(__root + 'routes/request/RequestController');
 app.use('/requests', RequestController);
 
-var TypeController = require(__root + 'routes/request/type/TypeController');
-app.use('/requests/types', TypeController);
+// var TypeController = require(__root + 'routes/request/type/TypeController');
+// app.use('/requests/types', TypeController);
 
 // var AuthController = require(__root + 'auth/AuthController');
 var AuthController = require(__root + 'routes/auth/AuthController');

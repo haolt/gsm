@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { User } from './user.class';
 import { environment } from 'src/environments/environment';
+import { CookieService } from 'src/app/core/cookie.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,16 +13,18 @@ export class TokenService {
 
   public API_URL: string = environment.apiUrl;
   public errStatus: string;
+  private token = this.cookieService.getCookie('token');
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private cookieService: CookieService
   ) { }
 
-  getInfoByToken(token: string) {
+  getInfoByToken() {
     return this.http.get(
       this.buildUrl('auth/me'),
       {
-        headers: this.buildHeader(token)
+        headers: this.buildHeader(this.token)
       }
     );
   }

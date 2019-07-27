@@ -24,8 +24,7 @@ export class NavbarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const token = this.cookieService.getCookie('token');
-    this.tokenService.getInfoByToken(token).subscribe(
+    this.tokenService.getInfoByToken().subscribe(
       (data: User) => {
         this.currentUser = data;
         this.curentUserService.publishCurrentUser(data);

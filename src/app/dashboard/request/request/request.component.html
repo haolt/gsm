@@ -1,10 +1,9 @@
 <app-search-form [title]="title">
 </app-search-form>
 <div class="announce">
-  {{ keywords }}
   <!-- <router-outlet></router-outlet> -->
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12">
       <button (click)="openModal()">
         <img src="../../../../assets/images/add_new.png" alt="add_new"/>
       </button>
@@ -13,8 +12,8 @@
       </app-request-add>
       <app-request-list></app-request-list>
     </div>
-    <div class="col-md-4">
+    <!-- <div class="col-md-4">
       <app-statistic-info></app-statistic-info>
-    </div>
+    </div> -->
   </div>
 </div>

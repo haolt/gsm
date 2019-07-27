@@ -10,12 +10,14 @@ var Request = require('./Request');
 // CREATES A NEW Request
 router.post('/', VerifyToken, function (req, res) {
   Request.create({
-            // studentId : req.body.studentId,
-            // type : req.body.type,
-            status : req.body.status,
-            handleBy : req.body.handleBy,
-            createBy : req.body.createBy,
-            type : req.body.type
+          checkTime : req.body.checkTime,
+          compensationFromTime : req.body.compensationFromTime,
+          compensationToTime : req.body.compensationToTime,
+          createdAt : req.body.createdAt,
+          createdBy : req.body.createdBy,
+          status : req.body.status,
+          reason : req.body.reason,
+          type : req.body.type,
         },
         function (err, request) {
             if (err) return res.status(500).send("There was a problem adding the information to the database.");
@@ -32,7 +34,7 @@ router.get('/', function (req, res) {
 });
 
 // GETS A SINGLE Request FROM THE DATABASE
-router.get('/:id', function (req, res) {
+router.get('/:id', VerifyToken, function (req, res) {
   Request.findById(req.params.id, function (err, request) {
         if (err) return res.status(500).send("There was a problem finding the user.");
         if (!request) return res.status(404).send("No user found.");
@@ -41,19 +43,20 @@ router.get('/:id', function (req, res) {
 });
 
 // DELETES A Request FROM THE DATABASE
-router.delete('/:id', function (req, res) {
+router.delete('/:id', VerifyToken, function (req, res) {
   Request.findByIdAndRemove(req.params.id, function (err, request) {
         if (err) return res.status(500).send("There was a problem deleting the request.");
-        res.status(200).send("User: "+ request.type +" was deleted.");
+        // res.status(200).send("request: "+ request.type +" was deleted.");
+        res.status(200).send(request);
     });
 });
 
 // UPDATES A SINGLE Request IN THE DATABASE
 // Added VerifyToken middleware to make sure only an authenticated user can put to this route
-router.put('/:id', /* VerifyToken, */ function (req, res) {
-  Request.findByIdAndUpdate(req.params.id, req.body, {new: true}, function (err, user) {
+router.put('/:id', VerifyToken, function (req, res) {
+  Request.findByIdAndUpdate(req.params.id, req.body, {new: true}, function (err, request) {
         if (err) return res.status(500).send("There was a problem updating the user.");
-        res.status(200).send(user);
+        res.status(200).send(request);
     });
 });
 
