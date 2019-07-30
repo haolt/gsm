@@ -3,3 +3,31 @@
   vertical-align: middle;
   border-bottom: 2px solid #dee2e6;
 }
+
+th, td, span, select {
+    font-size: .9em;
+    color: #333;
+}
+td {
+    font-size: .8em;
+}
+
+select.request-list-select {
+  min-width: 8em;
+  font-weight: 600;
+}
+
+select.request-list-select.pending {
+  border: 1px solid #28a745;
+  color: #28a745;
+}
+
+select.request-list-select.approved {
+  border: 1px solid #17a2b8;
+  color: #17a2b8;
+}
+
+select.request-list-select.rejected {
+  border: 1px solid #dc3545;
+  color: #dc3545;
+}

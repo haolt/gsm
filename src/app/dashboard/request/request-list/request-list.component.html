@@ -1,4 +1,4 @@
-<table class="table table-striped table-bordered table-hover request-list">
+<table class="table table-striped table-bordered table-hover table-responsive request-list">
   <thead>
     <tr>
       <th scope="col" rowSpan="2">
@@ -33,23 +33,25 @@
         </div>
       </th>
       <td>{{ request.createdBy }}
-        <!-- <img src="http://cdn.trochoiviet.com/wp-content/uploads/2016/08/pikachu.jpg"
-          alt="avatar" width="35px" height="30px" class="rounded-circle"
-        />
-        Pika cheww -->
       </td>
-      <td>{{ request.createdAt }}</td>
-      <td>{{ request.type }}</td>
-      <td>{{ request.checkTime }}</td>
-      <td>{{ request.reason }}</td>
-      <td>{{ request.compensationFromTime }}</td>
-      <td>{{ request.compensationToTime }}</td>
+      <td>{{ request.createdAt | time }}</td>
       <td>
-        <select class="custom-select"
+        <span *ngIf="request.type === 'in_late'" class="badge badge-info">{{ request.type | type }}</span>
+        <span *ngIf="request.type === 'leave_early'" class="badge badge-warning">{{ request.type | type }}</span>
+        <span *ngIf="request.type === 'off'" class="badge badge-secondary">{{ request.type | type }}</span>
+        <span *ngIf="request.type === 'resign'" class="badge badge-danger">{{ request.type | type }}</span>
+      </td>
+      <td>{{ request.checkTime | time }}</td>
+      <td>{{ request.reason }}</td>
+      <td>{{ request.compensationFromTime | time }}</td>
+      <td>{{ request.compensationToTime | time }}</td>
+      <td>
+        <select class="custom-select request-list-select"
+          [ngClass]="(request.status=='pending')?'pending': ((request.status=='approved')? 'approved': 'rejected')"
           [value]="request.status"
           [disabled]="!isAdmin"
+          (change)="handleStatusChange(request._id, $event)"
         >
-        <!-- (change)="ChangingValue($event)" -->
           <option value="pending">Pending</option>
           <option value="approved">Approve</option>
           <option value="rejected">Reject</option>

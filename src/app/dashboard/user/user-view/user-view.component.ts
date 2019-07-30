@@ -16,13 +16,18 @@ export class UserViewComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    const id = this.getIDPassViaURL();
-    this.getInformationAUser(id);
+    this.getIDPassViaURL();
   }
 
   private getIDPassViaURL() {
-    return this.activatedRoute.snapshot.paramMap.get('id');
-
+    let id: string;
+    this.activatedRoute.paramMap.subscribe(
+      (params) => {
+        id = params.get('id');
+        this.getInformationAUser(id);
+      }
+    );
+    // return this.activatedRoute.snapshot.paramMap.get('id');
   }
 
   private getInformationAUser(id) {

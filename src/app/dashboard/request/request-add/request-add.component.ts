@@ -3,6 +3,7 @@ import { trigger, style, animate, transition } from '@angular/animations';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CurentUserService } from '../../curent-user.service';
 import { patternValidator } from 'src/app/shared/pattern-validator';
+import { RequestService } from '../request.service';
 
 @Component({
   selector: 'app-request-add',
@@ -34,7 +35,8 @@ export class RequestAddComponent implements OnInit {
   public currentTime: any;
 
   constructor(
-    private curentUserService: CurentUserService
+    private curentUserService: CurentUserService,
+    private requestService: RequestService
   ) { }
 
   ngOnInit() {
@@ -118,13 +120,19 @@ export class RequestAddComponent implements OnInit {
     });
   }
   onAddRequest() {
-    console.log(this.addRequest.value);
     const request = this.addRequest.value;
     request.createdBy = this.currentUser._id;
     request.createdAt = new Date();
     request.status = 'pending';
-    console.log(request);
-
-    this.closeModal();
+    this.requestService.addARequest(request).subscribe(
+      (data) => {
+        console.log('Thêm thành công:', data);
+        
+        this.closeModal();
+      },
+      (errors) => {
+        this.requestService.handleError(errors);
+      }
+    )
   }
 }

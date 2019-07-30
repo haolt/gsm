@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpParams, HttpClient } from '@angular/common/http';
 import { CookieService } from 'src/app/core/cookie.service';
 import { environment } from 'src/environments/environment';
+import {mergeMap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -27,45 +28,78 @@ export class RequestService {
     );
   }
 
-  // IF NOT USE INTERCEPTOR NOT YET WORKS
-  // getAllUsers() {
-  //   return this.http.get(this.buildUrl('users'));
-  // }
-  // updateAUser({ id, name, email, password, avatar, position, division, role }) {
-  //   return this.http.put(
-  //     this.buildUrl('users/' + id),
-  //     {
-  //       name,
-  //       email,
-  //       password,
-  //       avatar,
-  //       position,
-  //       division,
-  //       role
-  //     },
-  //     {
-  //       headers: this.buildHeader(this.token)
-  //     }
-  //   );
-  // }
+   _getAllUsers_version_mergeMap() {
+    return this.http.get(
+      this.buildUrl('requests'),
+      {
+        headers: this.buildHeader(this.token)
+      }
+    ).pipe(
+      mergeMap(request => this.http.get(
+        this.buildUrl('users/' + request['createdBy']),
+        {
+          headers: this.buildHeader(this.token)
+        }
+      ))
+    );
+  }
 
-  // addAUser({ name, email, password, avatar, position, division, role }) {
-  //   return this.http.post(
-  //     this.buildUrl('users'),
-  //     {
-  //       name,
-  //       email,
-  //       password,
-  //       avatar,
-  //       position,
-  //       division,
-  //       role
-  //     },
-  //     {
-  //       headers: this.buildHeader(this.token)
-  //     }
-  //   );
-  // }
+  updateARequest(
+    id: string,
+    // checkTime,
+    // compensationFromTime,
+    // compensationToTime,
+    // createdAt,
+    // createdBy,
+    // reason,
+    status: string
+    //, type
+  ) {
+    return this.http.put(
+      this.buildUrl('requests/' + id),
+      {
+        // checkTime,
+        // compensationFromTime,
+        // compensationToTime,
+        // createdAt,
+        // createdBy,
+        // reason,
+        status,
+        // type
+      },
+      {
+        headers: this.buildHeader(this.token)
+      }
+    );
+  }
+
+  addARequest({
+      checkTime,
+      compensationFromTime,
+      compensationToTime,
+      createdAt,
+      createdBy,
+      reason,
+      status,
+      type
+  }) {
+    return this.http.post(
+      this.buildUrl('requests'),
+      {
+        checkTime,
+        compensationFromTime,
+        compensationToTime,
+        createdAt,
+        createdBy,
+        reason,
+        status,
+        type
+      },
+      {
+        headers: this.buildHeader(this.token)
+      }
+    );
+  }
 
   // deleteAUser(id) {
   //   return this.http.delete(
