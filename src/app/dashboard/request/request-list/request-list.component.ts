@@ -28,7 +28,7 @@ export class RequestListComponent implements OnInit {
 
   handleStatusChange(id: string, e: any) {
     const type = e.target.value.toString();
-    // API
+    // API, edit for Admin
     this.requestService.updateARequest(id, type).subscribe((data) => {
       console.log(data);
     });

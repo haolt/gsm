@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../request.service';
 import { CurentUserService } from '../../curent-user.service';
-import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-request',
@@ -40,8 +39,6 @@ export class RequestComponent implements OnInit {
   }
 
   private checkIsAdminToFilterRequest(curentUser, allRequests) {
-    // console.log(curentUser, allRequests);
-
     if (curentUser.role !== 'admin') {
       this.allRequests = allRequests.filter(request => request.createdBy._id === curentUser._id);
     }
