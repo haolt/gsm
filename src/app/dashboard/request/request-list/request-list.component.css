@@ -43,3 +43,11 @@ select.request-list-select.rejected {
   display: flex;
   justify-content: space-around;
 }
+
+.user {
+  min-width: 12em;
+}
+
+.user strong {
+  margin-left: .5em;
+}

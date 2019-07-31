@@ -121,13 +121,13 @@ export class RequestAddComponent implements OnInit {
   }
   onAddRequest() {
     const request = this.addRequest.value;
-    request.createdBy = this.currentUser._id;
+    // request.createdBy = this.currentUser._id;
+    request.createdBy = this.currentUser;
     request.createdAt = new Date();
     request.status = 'pending';
     this.requestService.addARequest(request).subscribe(
       (data) => {
         console.log('Thêm thành công:', data);
-
         this.closeModal();
       },
       (errors) => {

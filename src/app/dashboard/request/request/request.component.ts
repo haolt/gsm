@@ -25,6 +25,7 @@ export class RequestComponent implements OnInit {
     this.requestService.getAllRequests().subscribe((data) => {
       this.allRequests = data;
       this.allRequests = this.allRequests.reverse();
+      console.log(this.allRequests);
       this.checkIsAdminToFilterRequest(this.curentUser, this.allRequests);
     });
   }
@@ -42,7 +43,7 @@ export class RequestComponent implements OnInit {
     // console.log(curentUser, allRequests);
 
     if (curentUser.role !== 'admin') {
-      this.allRequests = allRequests.filter(request => request.createdBy === curentUser._id);
+      this.allRequests = allRequests.filter(request => request.createdBy._id === curentUser._id);
     }
   }
 

@@ -37,7 +37,13 @@
           <label class="custom-control-label" for="{{ request._id }}">{{ i + 1 }}</label>
         </div>
       </th>
-      <td>{{ request.createdBy }}
+      <td>
+        <div class="user">
+          <img alt="avatar" class="rounded-circle" height="30px" width="35px"
+            src="{{ request.createdBy.avatar }}"
+          />
+          <strong>{{ request.createdBy.name }}</strong>
+        </div>
       </td>
       <td>{{ request.createdAt | time }}</td>
       <td>

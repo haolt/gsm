@@ -4,7 +4,7 @@ var RequestSchema = new mongoose.Schema({
   compensationFromTime: Date,
   compensationToTime: Date,
   createdAt: Date,
-  createdBy: String,
+  createdBy: Object,
   status: String,
   reason: String,
   type: String
