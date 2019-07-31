@@ -113,14 +113,14 @@ export class RequestService {
     );
   }
 
-  // deleteAUser(id) {
-  //   return this.http.delete(
-  //     this.buildUrl('users/' + id ),
-  //     {
-  //       headers: this.buildHeader(this.token)
-  //     }
-  //   );
-  // }
+  deleteARequest(id) {
+    return this.http.delete(
+      this.buildUrl('requests/' + id ),
+      {
+        headers: this.buildHeader(this.token)
+      }
+    );
+  }
 
   // getAUser(id) {
   //   return this.http.get(

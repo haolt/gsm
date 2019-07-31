@@ -22,6 +22,7 @@ export class RequestListComponent implements OnInit {
       this.allRequests = this.allRequests.map((request) => {
         request.hasChecked = false;
         request.hasEditted = false;
+        request.hasDisplayDeleteForm = false;
         request.hasSeeDetail = false;
         return request;
       });
@@ -52,9 +53,19 @@ export class RequestListComponent implements OnInit {
     editRequest.hasSeeDetail = true;
     this.isShowModalDetail = !this.isShowModalDetail;
   }
-  // updateARequest(request) {
-  //   this.requestService._updateARequest_version_full(request).subscribe((data) => {
-  //     console.log(data);
-  //   });
-  // }
+
+  handleClickDeleteBtn(id) {
+    const deletedRequest = this.allRequests.filter((user) => user._id === id)[0];
+    deletedRequest.hasDisplayDeleteForm = true;
+  }
+
+  onCloseModalDelete({id, hasDelete}) {
+    const deletedRequest = this.allRequests.filter((user) => user._id === id)[0];
+    if (deletedRequest ) {
+      deletedRequest.hasDisplayDeleteForm = false;
+    }
+    if (hasDelete) {
+      this.allRequests = this.allRequests.filter((user) => user._id !== id);
+    }
+  }
 }

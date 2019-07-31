@@ -13,9 +13,10 @@ import { TimePipe } from './time.pipe';
 import { TypePipe } from './type.pipe';
 import { RequestEditComponent } from './request-edit/request-edit.component';
 import { RequestDetailComponent } from './request-detail/request-detail.component';
+import { RequestDeleteComponent } from './request-delete/request-delete.component';
 
 @NgModule({
-  declarations: [RequestComponent, RequestAddComponent, RequestListComponent, TimePipe, TypePipe, RequestEditComponent, RequestDetailComponent],
+  declarations: [RequestComponent, RequestAddComponent, RequestListComponent, TimePipe, TypePipe, RequestEditComponent, RequestDetailComponent, RequestDeleteComponent],
   imports: [
     CommonModule,
     HttpClientModule,

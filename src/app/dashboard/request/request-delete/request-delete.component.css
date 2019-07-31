@@ -1,0 +1,12 @@
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.buttons button {
+  margin: 0 1em;
+}
+
+.add-delete-avatar {
+  max-width: 30px;
+}

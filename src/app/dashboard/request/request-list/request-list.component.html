@@ -14,13 +14,9 @@
       <th scope="col" rowSpan="2">Type</th>
       <th scope="col" rowSpan="2">Time Request</th>
       <th scope="col" rowSpan="2">Reason</th>
-      <th scope="col" colSpan="2">COMPENSATION</th>
+      <th scope="col" colSpan="2">Compensation</th>
       <th scope="col" rowSpan="2">Status</th>
-      <th scope="col" rowSpan="2"
-        *ngIf="!isAdmin"
-      >
-        Options
-      </th>
+      <th scope="col" rowSpan="2">Options</th>
     </tr>
     <tr>
       <th>From</th>
@@ -68,7 +64,7 @@
           <option value="rejected">Reject</option>
         </select>
       </td>
-      <td *ngIf="!isAdmin">
+      <td>
         <div class="options">
 
           <button class="edit-user-btn"
@@ -83,22 +79,33 @@
           >
           </app-request-detail>
 
+          <ng-container *ngIf="!isAdmin">
+            <button class="edit-user-btn"
+              [ngClass]="{'d-none': request.status !== 'pending'}"
+              (click)="openModalEdit(request._id)"
+            >
+              <img alt="edit_icon" src="../../../../assets/images/btn/edit.png" width="21px"/>
+            </button>
+            <app-request-edit
+              *ngIf="request.hasEditted"
+              [(visible)]="isShowModal"
+              [editRequest]="request"
+            >
+            </app-request-edit>
+          </ng-container>
 
-          <button class="edit-user-btn"
-            [ngClass]="{'d-none': request.status !== 'pending'}"
-            (click)="openModalEdit(request._id)"
+          <button class="delete-user-btn"
+            (click)="handleClickDeleteBtn(request._id)"
           >
-            <img alt="edit_icon" src="../../../../assets/images/btn/edit.png" width="21px">
+            <img alt="trash_icon" src="../../../../assets/images/btn/trash.png" width="25px"/>
           </button>
-          <app-request-edit
-            *ngIf="request.hasEditted"
-            [(visible)]="isShowModal"
-            [editRequest]="request"
-          >
-          </app-request-edit>
-
-
-          <button class="delete-user-btn"><img alt="trash_icon" src="../../../../assets/images/btn/trash.png" width="25px"></button>
+          <div class="deleteForm" *ngIf="request.hasDisplayDeleteForm">
+            <app-modal [(visible)]="request.hasDisplayDeleteForm">
+              <app-request-delete [request]="request"
+                (closeFormEventEmitter)="onCloseModalDelete($event)"
+              ></app-request-delete>
+            </app-modal>
+          </div>
         </div>
       </td>
     </tr>
