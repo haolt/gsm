@@ -6,6 +6,7 @@
     <strong>Filter by fields</strong>
   </label>
   <button
+    *ngIf="isAdmin"
     (click)="goToUserAdd()"
   >
     <img src="../../../../assets/images/add_mem.png" alt="add-icon" width="35px"/>

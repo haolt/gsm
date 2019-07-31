@@ -38,12 +38,12 @@
         </div>
       </th>
       <td>
-        <div class="user">
+        <a class="user" [routerLink]="['/dashboard', 'users', request.createdBy._id]">
           <img alt="avatar" class="rounded-circle" height="30px" width="35px"
             src="{{ request.createdBy.avatar }}"
           />
           <strong>{{ request.createdBy.name }}</strong>
-        </div>
+        </a>
       </td>
       <td>{{ request.createdAt | time }}</td>
       <td>
@@ -70,18 +70,34 @@
       </td>
       <td *ngIf="!isAdmin">
         <div class="options">
-          <button class="edit-user-btn"><img alt="preview_icon" src="../../../../assets/images/btn/preview.png" width="25px"></button>
+
+          <button class="edit-user-btn"
+            (click)="openModalSeeDetail(request._id)"
+          >
+            <img alt="preview_icon" src="../../../../assets/images/btn/preview.png" width="25px">
+          </button>
+          <app-request-detail
+            *ngIf="request.hasSeeDetail"
+            [(visible)]="isShowModalDetail"
+            [request]="request"
+          >
+          </app-request-detail>
+
+
           <button class="edit-user-btn"
             [ngClass]="{'d-none': request.status !== 'pending'}"
             (click)="openModalEdit(request._id)"
           >
-            <img alt="edit_icon" src="../../../../assets/images/btn/edit.png" width="21px"></button>
-            <app-request-edit
-              *ngIf="request.hasEditted"
-              [(visible)]="isShowModal"
-              [editRequest]="request"
-            >
-            </app-request-edit>
+            <img alt="edit_icon" src="../../../../assets/images/btn/edit.png" width="21px">
+          </button>
+          <app-request-edit
+            *ngIf="request.hasEditted"
+            [(visible)]="isShowModal"
+            [editRequest]="request"
+          >
+          </app-request-edit>
+
+
           <button class="delete-user-btn"><img alt="trash_icon" src="../../../../assets/images/btn/trash.png" width="25px"></button>
         </div>
       </td>

@@ -11,6 +11,7 @@ export class UserFilterComponent implements OnInit {
 
   public isShowFilterForm = false;
   public allDivisions: any;
+  @Input() isAdmin: boolean;
   @Output() filterConditionsEventEmitter = new EventEmitter();
   // filterConditions
   public name = '';

@@ -8,6 +8,11 @@ th, td, span, select {
     font-size: .9em;
     color: #333;
 }
+
+span.badge {
+  color: #fff;
+}
+
 td {
     font-size: .8em;
 }
@@ -46,6 +51,7 @@ select.request-list-select.rejected {
 
 .user {
   min-width: 12em;
+  display: inline-block;
 }
 
 .user strong {

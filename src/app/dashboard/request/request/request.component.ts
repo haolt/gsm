@@ -24,7 +24,6 @@ export class RequestComponent implements OnInit {
     this.requestService.getAllRequests().subscribe((data) => {
       this.allRequests = data;
       this.allRequests = this.allRequests.reverse();
-      console.log(this.allRequests);
       this.checkIsAdminToFilterRequest(this.curentUser, this.allRequests);
     });
   }

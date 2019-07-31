@@ -1,0 +1,48 @@
+<div class="card dialog p-0"  [@add_request_dialog] *ngIf="visible">
+  <div class="card-header">
+    <h3 class="card-title request-detail__title">{{ request.type | type }} Form</h3>
+    <!-- <p class="request-add__sub-title">
+      Created by
+      <img alt="avatar" class="rounded-circle mx-1" width="30px" height="30px"
+        src="{{ request.createdBy.avatar }}"
+      />
+      <strong>{{ request.createdBy.name }}</strong>
+      at
+      <strong>{{ request.createdAt | time }}</strong>
+    </p> -->
+    <button (click)="closeModal()" aria-label="Close" class="dialog__close-btn">X</button>
+  </div>
+  <div class="card-body">
+    <ul class="user-information">
+      <li>
+        Created by
+        <img alt="avatar" class="rounded-circle mx-1" width="30px" height="30px"
+          src="{{ request.createdBy.avatar }}"
+        />
+        <strong>{{ request.createdBy.name }}</strong>
+        at
+        <strong>{{ request.createdAt | time }}</strong>
+      </li>
+      <li>
+        <b class="mr-1">Check Time:</b>
+        <span>{{ request.checkTime | time }}</span>
+      </li>
+      <li>
+        <b>Compensation:</b>
+        <ul>
+          <li>From: {{ request.compensationFromTime | time }}</li>
+          <li>To: {{ request.compensationToTime | time }}</li>
+        </ul>
+      </li>
+      <li>
+        <b class="mr-1">Status:</b>
+        <span class="badge badge-info">{{ request.status }}</span>
+      </li>
+      <li>
+        <b class="mr-1">Reason:</b>
+        <span>{{ request.reason }}</span>
+      </li>
+    </ul>
+  </div>
+</div>
+<div *ngIf="visible" class="overlay" (click)="closeModal()"></div>

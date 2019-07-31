@@ -11,6 +11,7 @@ export class RequestListComponent implements OnInit {
   @Input() allRequests: any;
   @Input() isAdmin: boolean;
   public isShowModal: boolean;
+  public isShowModalDetail: boolean;
 
   constructor(
     private requestService: RequestService
@@ -21,6 +22,7 @@ export class RequestListComponent implements OnInit {
       this.allRequests = this.allRequests.map((request) => {
         request.hasChecked = false;
         request.hasEditted = false;
+        request.hasSeeDetail = false;
         return request;
       });
     }
@@ -45,6 +47,11 @@ export class RequestListComponent implements OnInit {
     this.isShowModal = !this.isShowModal;
   }
 
+  openModalSeeDetail(id: string) {
+    const editRequest = this.allRequests.filter((request) => request._id === id)[0];
+    editRequest.hasSeeDetail = true;
+    this.isShowModalDetail = !this.isShowModalDetail;
+  }
   // updateARequest(request) {
   //   this.requestService._updateARequest_version_full(request).subscribe((data) => {
   //     console.log(data);

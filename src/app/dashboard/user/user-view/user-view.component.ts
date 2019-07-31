@@ -33,8 +33,6 @@ export class UserViewComponent implements OnInit, OnDestroy {
     this.userService.getAUser(id).subscribe(
       (data) => {
         this.user = data;
-        console.log(this.user);
-
       },
       (errors) => {
         this.userService.handleError(errors);
