@@ -6,9 +6,9 @@ import { patternValidator } from 'src/app/shared/pattern-validator';
 import { RequestService } from '../request.service';
 
 @Component({
-  selector: 'app-request-add',
-  templateUrl: './request-add.component.html',
-  styleUrls: ['./request-add.component.css'],
+  selector: 'app-request-edit',
+  templateUrl: './request-edit.component.html',
+  styleUrls: ['./request-edit.component.css'],
   animations: [
     trigger('add_request_dialog', [
       transition('void => *', [
@@ -27,38 +27,44 @@ import { RequestService } from '../request.service';
     ])
   ]
 })
-export class RequestAddComponent implements OnInit {
+export class RequestEditComponent implements OnInit {
   @Input() visible: boolean;
+  @Input() editRequest: any;
   @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
-  public addRequest: FormGroup;
-  public currentUser: any;
-  public currentTime: any;
+  public editedRequest: FormGroup;
+  // public currentUser: any;
+  // public currentTime: any;
 
   constructor(
     private curentUserService: CurentUserService,
-    private requestService: RequestService
+    // private requestService: RequestService
   ) { }
 
   ngOnInit() {
-    this.curentUserService.getCurrentUser().subscribe((data) => {
-      this.currentUser = data;
-    });
-    const currentTime = new Date();
-    this.currentTime = this.setTimeFormatToInputDateTimeLocal(currentTime);
-    this.createAddRequest();
+    // this.curentUserService.getCurrentUser().subscribe((data) => {
+    //   this.currentUser = data;
+    // });
+    // const currentTime = new Date();
+    // this.currentTime = this.setTimeFormatToInputDateTimeLocal(currentTime);
+    // this.editRequest.map((request) => {
+    //   request =this.setTimeFormatToInputDateTimeLocal(currentTime);
+    //   return request;
+    // });
+    this.createEditedRequest();
+    console.log(this.editedRequest.value);
   }
+  // 2019-07-30T07:26:00.000Z => format_value Input
+  private fromJsonApiDateToDateTime(formatValueApiResponse: string) {
 
-  private setTimeFormatToInputDateTimeLocal(time) {
-    let day = time.getDate().toString();
-    day = (day.length === 1) ? `0${day}` : day;
-    let month = (time.getMonth() + 1).toString();
+    const timeObj = new Date(formatValueApiResponse);
+
+    const hours = timeObj.getHours();
+    const mins = timeObj.getMinutes();
+    const date = timeObj.getDate();
+    let month = (timeObj.getMonth() + 1).toString();
     month = (month.length === 1) ? `0${month}` : month;
-    const year = time.getFullYear().toString();
-    let hour = time.getHours().toString();
-    hour = (hour.length === 1) ? `0${hour}` : hour;
-    let mins = time.getMinutes().toString();
-    mins = (mins.length === 1) ? `0${mins}` : mins;
-    return `${year}-${month}-${day}T${hour}:${mins}`;
+    const year = timeObj.getFullYear();
+    return `${year}-${month}-${date}T${hours}:${mins}`;
   }
 
   closeModal() {
@@ -66,11 +72,11 @@ export class RequestAddComponent implements OnInit {
     this.visibleChange.emit(this.visible);
   }
 
-  private createAddRequest() {
-    this.addRequest = new FormGroup({
+  private createEditedRequest() {
+    this.editedRequest = new FormGroup({
       id: new FormControl(
         {
-          value: this.currentUser._id,
+          value: this.editRequest._id,
           disabled: true
         },
         [
@@ -79,7 +85,7 @@ export class RequestAddComponent implements OnInit {
       ),
       name: new FormControl(
         {
-          value: this.currentUser.name,
+          value: this.editRequest.name,
           disabled: true
         },
         [
@@ -87,52 +93,41 @@ export class RequestAddComponent implements OnInit {
         ]
       ),
       type: new FormControl(
-        'in_late',
+        this.editRequest.type,
         [
           Validators.required
         ]
       ),
       checkTime: new FormControl(
-        this.currentTime,
+        this.fromJsonApiDateToDateTime(this.editRequest.checkTime),
         [
           Validators.required,
           patternValidator(/[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}/)
         ]
       ),
       compensationFromTime: new FormControl(
-        this.currentTime,
+        this.fromJsonApiDateToDateTime(this.editRequest.compensationFromTime),
         [
           Validators.required,
           patternValidator(/[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}/)
         ]
       ),
       compensationToTime: new FormControl(
-        this.currentTime,
+        this.fromJsonApiDateToDateTime(this.editRequest.compensationToTime),
         [
           Validators.required,
           patternValidator(/[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}/)
         ]
       ),
       reason: new FormControl(
-        '',
+        this.editRequest.reason,
         Validators.required
       )
     });
   }
-  onAddRequest() {
-    const request = this.addRequest.value;
-    request.createdBy = this.currentUser._id;
-    request.createdAt = new Date();
-    request.status = 'pending';
-    this.requestService.addARequest(request).subscribe(
-      (data) => {
-        console.log('Thêm thành công:', data);
-
-        this.closeModal();
-      },
-      (errors) => {
-        this.requestService.handleError(errors);
-      }
-    );
+  onEditRequest() {
+    const request = this.editedRequest.value;
+    request.id = this.editRequest._id;
+    console.log('suỬA NHÉ', request);
   }
 }

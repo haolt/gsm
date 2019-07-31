@@ -1,58 +1,53 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { RequestService } from './../request.service';
-import { CurentUserService } from '../../curent-user.service';
-
-// import { HttpClient } from '@angular/common/http';
-// import { mergeMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-request-list',
   templateUrl: './request-list.component.html',
   styleUrls: ['./request-list.component.css']
 })
-export class RequestListComponent implements OnInit, OnDestroy {
+export class RequestListComponent implements OnInit {
 
-  public isAdmin: boolean;
-  public allRequests: any;
+  @Input() allRequests: any;
+  @Input() isAdmin: boolean;
+  public isShowModal: boolean;
 
   constructor(
-    private requestService: RequestService,
-    private curentUserService: CurentUserService
+    private requestService: RequestService
   ) { }
 
   ngOnInit() {
-    this.getAllRequests();
-    this.curentUserService.getIsAdmin().subscribe(data => {
-      this.isAdmin = data;
-    });
-    // this.requestService._getAllUsers_version_mergeMap().subscribe((data) => console.log(data));
-  }
-
-  private getAllRequests() {
-    this.requestService.getAllUsers().subscribe((data) => {
-      this.allRequests = data;
-      this.allRequests = this.allRequests.reverse().map((request) => {
+    if (this.allRequests) {
+      this.allRequests = this.allRequests.map((request) => {
         request.hasChecked = false;
+        request.hasEditted = false;
         return request;
       });
-      // console.log(this.allRequests);
-    });
+    }
   }
 
   handleStatusChange(id: string, e: any) {
-    console.log(id, e);
     const type = e.target.value.toString();
     // API
     this.requestService.updateARequest(id, type).subscribe((data) => {
       console.log(data);
     });
+    // this.updateARequest({id, type});
+
     // VIEW
     const changedRequest = this.allRequests.filter(request => request._id === id)[0];
     changedRequest.status = type;
-
   }
 
-  ngOnDestroy() {
-    // this.curentUserService.getIsAdmin().unsubscribe();
+  openModalEdit(id: string) {
+    const editRequest = this.allRequests.filter((request) => request._id === id)[0];
+    editRequest.hasEditted = true;
+    this.isShowModal = !this.isShowModal;
   }
+
+  // updateARequest(request) {
+  //   this.requestService._updateARequest_version_full(request).subscribe((data) => {
+  //     console.log(data);
+  //   });
+  // }
 }

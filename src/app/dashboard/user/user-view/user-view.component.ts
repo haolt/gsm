@@ -27,7 +27,6 @@ export class UserViewComponent implements OnInit, OnDestroy {
         this.getInformationAUser(id);
       }
     );
-    // return this.activatedRoute.snapshot.paramMap.get('id');
   }
 
   private getInformationAUser(id) {

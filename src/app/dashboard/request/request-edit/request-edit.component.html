@@ -1,0 +1,89 @@
+<div class="card dialog p-0"  [@add_request_dialog] *ngIf="visible">
+    <div class="card-header">
+      <h3 class="card-title request-add__title">Form Request</h3>
+      <button (click)="closeModal()" aria-label="Close" class="dialog__close-btn">X</button>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="editedRequest"
+        (ngSubmit)="onEditRequest()"
+      >
+        <div class="request__item">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control"
+              formControlName="name"
+            />
+          </div>
+          <div class="form-group">
+            <label>Staff code</label>
+            <input type="text" class="form-control"
+              formControlName="id"
+            />
+          </div>
+        </div>
+
+        <div class="request__item">
+          <div class="form-group">
+            <label for="exampleInputPassword1">Request Type</label>
+            <select class="custom-select"
+              formControlName="type"
+            >
+              <option value="in_late">In late</option>
+              <option value="leave_early">Leave early</option>
+              <option value="off">Off</option>
+              <option value="resign">Resign</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Check time</label>
+            <input type="datetime-local" class="form-control"
+              formControlName="checkTime"
+            />
+          </div>
+        </div>
+
+        <label>Compensation time</label>
+        <div class="request__item">
+          <div class="form-group">
+            <label>From</label>
+            <input type="datetime-local" class="form-control"
+              formControlName="compensationFromTime"
+            />
+          <!-- <input id="party" type="datetime-local" name="partydate" min="2017-06-01T08:30" max="2017-07-30T16:30"> -->
+          </div>
+          <div class="form-group">
+            <label>To</label>
+            <input type="datetime-local" class="form-control"
+              formControlName="compensationToTime"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Reason</label>
+          <textarea class="form-control"
+            formControlName="reason"
+          ></textarea>
+          <div *ngIf="editedRequest.controls['reason'].errors && !editedRequest.controls['reason'].pristine" class="error-msg">
+            <div [hidden]="!editedRequest.controls['reason'].errors.required">
+              This field is required
+            </div>
+          </div>
+        </div>
+        <div class="request__item">
+          <button type="button" class="btn btn-light"
+            (click)="closeModal()"
+          >
+            <img alt="cancel_icon" src="../../../../assets/images/btn/cancel.png" width="25px">
+            Cancel
+          </button>
+          <button type="submit" class="btn btn-success"
+            [disabled]="editedRequest.invalid"
+          >
+            <img alt="save_icon" src="../../../../assets/images/btn/save.png" width="25px">
+            Update
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div *ngIf="visible" class="overlay" (click)="closeModal()"></div>

@@ -4,13 +4,18 @@
   <!-- <router-outlet></router-outlet> -->
   <div class="row">
     <div class="col-md-12">
-      <button (click)="openModal()">
+      <button (click)="openModal()"
+        *ngIf="!isAdmin"
+      >
         <img src="../../../../assets/images/add_new.png" alt="add_new"/>
       </button>
       <app-request-add [(visible)]="isShowModal"
       >
       </app-request-add>
-      <app-request-list></app-request-list>
+      <app-request-list
+        [allRequests]="allRequests"
+        [isAdmin]="isAdmin"
+      ></app-request-list>
     </div>
     <!-- <div class="col-md-4">
       <app-statistic-info></app-statistic-info>

@@ -11,9 +11,10 @@ import { RequestListComponent } from './request-list/request-list.component';
 import { MultilangsModule } from 'src/app/multilangs/multilangs.module';
 import { TimePipe } from './time.pipe';
 import { TypePipe } from './type.pipe';
+import { RequestEditComponent } from './request-edit/request-edit.component';
 
 @NgModule({
-  declarations: [RequestComponent, RequestAddComponent, RequestListComponent, TimePipe, TypePipe],
+  declarations: [RequestComponent, RequestAddComponent, RequestListComponent, TimePipe, TypePipe, RequestEditComponent],
   imports: [
     CommonModule,
     HttpClientModule,

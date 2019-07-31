@@ -31,3 +31,15 @@ select.request-list-select.rejected {
   border: 1px solid #dc3545;
   color: #dc3545;
 }
+
+.options button {
+  background: transparent;
+  border: none;
+  padding: 0 .5em;
+  font-size: .9em;
+}
+
+.options {
+  display: flex;
+  justify-content: space-around;
+}

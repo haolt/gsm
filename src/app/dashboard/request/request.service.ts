@@ -19,28 +19,12 @@ export class RequestService {
 
   private token = this.cookieService.getCookie('token');
 
-  getAllUsers() {
+  getAllRequests() {
     return this.http.get(
       this.buildUrl('requests'),
       {
         headers: this.buildHeader(this.token)
       }
-    );
-  }
-
-   _getAllUsers_version_mergeMap() {
-    return this.http.get(
-      this.buildUrl('requests'),
-      {
-        headers: this.buildHeader(this.token)
-      }
-    ).pipe(
-      mergeMap(request => this.http.get(
-        this.buildUrl('users/' + request['createdBy']),
-        {
-          headers: this.buildHeader(this.token)
-        }
-      ))
     );
   }
 
@@ -67,6 +51,34 @@ export class RequestService {
         status,
         // type
       },
+      {
+        headers: this.buildHeader(this.token)
+      }
+    );
+  }
+
+  _updateARequest_version_full(request) {
+    if (request.checkTime) {
+      request.checkTime = request.checkTime;
+    }
+    if (request.compensationFromTime) {
+      request.compensationFromTime = request.compensationFromTime;
+    }
+    if (request.compensationToTime) {
+      request.compensationToTime = request.compensationToTime;
+    }
+    if (request.reason) {
+      request.reason = request.reason;
+    }
+    if (request.status) {
+      request.status = request.status;
+    }
+    if (request.type) {
+      request.type = request.type;
+    }
+    return this.http.put(
+      this.buildUrl('requests/' + request.id),
+      request,
       {
         headers: this.buildHeader(this.token)
       }

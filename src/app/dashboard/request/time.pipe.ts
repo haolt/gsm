@@ -11,7 +11,7 @@ export class TimePipe implements PipeTransform {
     return result;
   }
 
-  private formatDate = (time) => {  
+  private formatDate = (time) => {
     const timeObj = new Date(time);
     // const dayNames = [
     //   'Mon', 'Tue', 'Web', 'Thur', 'Fri', 'Sat', 'Sun'
@@ -24,7 +24,7 @@ export class TimePipe implements PipeTransform {
     ];
     const hours = timeObj.getHours();
     const seconds = timeObj.getMinutes();
-    const dayIndex = timeObj.getMonth()
+    // const dayIndex = timeObj.getMonth();
     const date = timeObj.getDate();
     const monthIndex = timeObj.getMonth();
     const year = timeObj.getFullYear();

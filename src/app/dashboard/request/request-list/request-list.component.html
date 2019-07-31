@@ -16,6 +16,11 @@
       <th scope="col" rowSpan="2">Reason</th>
       <th scope="col" colSpan="2">COMPENSATION</th>
       <th scope="col" rowSpan="2">Status</th>
+      <th scope="col" rowSpan="2"
+        *ngIf="!isAdmin"
+      >
+        Options
+      </th>
     </tr>
     <tr>
       <th>From</th>
@@ -57,6 +62,24 @@
           <option value="rejected">Reject</option>
         </select>
       </td>
+      <td *ngIf="!isAdmin">
+        <div class="options">
+          <button class="edit-user-btn"><img alt="preview_icon" src="../../../../assets/images/btn/preview.png" width="25px"></button>
+          <button class="edit-user-btn"
+            [ngClass]="{'d-none': request.status !== 'pending'}"
+            (click)="openModalEdit(request._id)"
+          >
+            <img alt="edit_icon" src="../../../../assets/images/btn/edit.png" width="21px"></button>
+            <app-request-edit
+              *ngIf="request.hasEditted"
+              [(visible)]="isShowModal"
+              [editRequest]="request"
+            >
+            </app-request-edit>
+          <button class="delete-user-btn"><img alt="trash_icon" src="../../../../assets/images/btn/trash.png" width="25px"></button>
+        </div>
+      </td>
     </tr>
   </tbody>
 </table>
+
