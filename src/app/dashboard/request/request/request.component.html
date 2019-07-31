@@ -10,6 +10,7 @@
         <img src="../../../../assets/images/add_new.png" alt="add_new"/>
       </button>
       <app-request-add [(visible)]="isShowModal"
+        (addedRequestEventEmitter)="onAddedRequest($event)"
       >
       </app-request-add>
       <app-request-list

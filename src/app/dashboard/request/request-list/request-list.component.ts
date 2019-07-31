@@ -26,6 +26,7 @@ export class RequestListComponent implements OnInit {
         request.hasSeeDetail = false;
         return request;
       });
+      // this.requestService.getAddedRequest().subscribe(data => console.log(data));
     }
   }
 
@@ -35,7 +36,6 @@ export class RequestListComponent implements OnInit {
     this.requestService.updateARequest(id, type).subscribe((data) => {
       console.log(data);
     });
-    // this.updateARequest({id, type});
 
     // VIEW
     const changedRequest = this.allRequests.filter(request => request._id === id)[0];

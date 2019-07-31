@@ -29,6 +29,7 @@ import { RequestService } from '../request.service';
 })
 export class RequestAddComponent implements OnInit {
   @Input() visible: boolean;
+  @Output() addedRequestEventEmitter: EventEmitter<any> = new EventEmitter<any>();
   @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   public addRequest: FormGroup;
   public currentUser: any;
@@ -126,7 +127,9 @@ export class RequestAddComponent implements OnInit {
     request.status = 'pending';
     this.requestService.addARequest(request).subscribe(
       (data) => {
-        console.log('Thêm thành công:', data);
+        // this.requestService.publishAddedRequest(data);
+        // this.requestService.addCard();
+        this.addedRequestEventEmitter.emit(data);
         this.closeModal();
       },
       (errors) => {

@@ -6,6 +6,7 @@ import { RequestService } from './../request.service';
   templateUrl: './request-delete.component.html',
   styleUrls: ['./request-delete.component.css']
 })
+
 export class RequestDeleteComponent implements OnInit {
   @Input() request: any;
   @Output() closeFormEventEmitter = new EventEmitter();

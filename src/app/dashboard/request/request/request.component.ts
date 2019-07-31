@@ -46,4 +46,11 @@ export class RequestComponent implements OnInit {
   openModal() {
     this.isShowModal = !this.isShowModal;
   }
+
+  onAddedRequest(request) {
+    // this.requestService.publishAddedRequest(request);
+    this.allRequests.push(request);
+    this.allRequests = this.allRequests.reverse();
+    // console.log(this.allRequests);
+  }
 }

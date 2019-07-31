@@ -3,6 +3,7 @@ import { HttpHeaders, HttpParams, HttpClient } from '@angular/common/http';
 import { CookieService } from 'src/app/core/cookie.service';
 import { environment } from 'src/environments/environment';
 import {mergeMap} from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +12,32 @@ export class RequestService {
 
   public API_URL: string = environment.apiUrl;
   public errStatus: string;
+  private token = this.cookieService.getCookie('token');
+  // public $addedRequestObservable: BehaviorSubject<any>;
+  // public cardSbj: BehaviorSubject<any[] | null >; // Example of Mr.Dan
 
   constructor(
     private http: HttpClient,
     private cookieService: CookieService,
-  ) { }
+  ) {
+    // this.$addedRequestObservable = new BehaviorSubject(null);
+    // this.cardSbj = new BehaviorSubject(null);
+  }
 
-  private token = this.cookieService.getCookie('token');
+  // addCard() {
+  //   this.cardSbj.next(['Observable is so difficult :(( . This is example getCart addCart Mr.Dan guided me. 22/03. Hic :']);
+  // }
+
+  // getCart() {
+  //   return this.cardSbj;
+  // }
+
+  // getAddedRequest() {
+  //   return this.$addedRequestObservable;
+  // }
+  // publishAddedRequest(request) {
+  //   this.$addedRequestObservable.next(request);
+  // }
 
   getAllRequests() {
     return this.http.get(
@@ -121,15 +141,6 @@ export class RequestService {
       }
     );
   }
-
-  // getAUser(id) {
-  //   return this.http.get(
-  //     this.buildUrl('users/' + id ),
-  //     {
-  //       headers: this.buildHeader(this.token)
-  //     }
-  //   );
-  // }
 
   handleError(err) {
     if (err.error instanceof Error) {
