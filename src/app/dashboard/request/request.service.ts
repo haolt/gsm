@@ -13,14 +13,12 @@ export class RequestService {
   public API_URL: string = environment.apiUrl;
   public errStatus: string;
   private token = this.cookieService.getCookie('token');
-  // public $addedRequestObservable: BehaviorSubject<any>;
   // public cardSbj: BehaviorSubject<any[] | null >; // Example of Mr.Dan
 
   constructor(
     private http: HttpClient,
     private cookieService: CookieService,
   ) {
-    // this.$addedRequestObservable = new BehaviorSubject(null);
     // this.cardSbj = new BehaviorSubject(null);
   }
 
@@ -30,13 +28,6 @@ export class RequestService {
 
   // getCart() {
   //   return this.cardSbj;
-  // }
-
-  // getAddedRequest() {
-  //   return this.$addedRequestObservable;
-  // }
-  // publishAddedRequest(request) {
-  //   this.$addedRequestObservable.next(request);
   // }
 
   getAllRequests() {

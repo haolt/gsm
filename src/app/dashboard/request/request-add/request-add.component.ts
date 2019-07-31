@@ -127,9 +127,8 @@ export class RequestAddComponent implements OnInit {
     request.status = 'pending';
     this.requestService.addARequest(request).subscribe(
       (data) => {
-        // this.requestService.publishAddedRequest(data);
-        // this.requestService.addCard();
         this.addedRequestEventEmitter.emit(data);
+        this.createAddRequest();
         this.closeModal();
       },
       (errors) => {
