@@ -90,7 +90,9 @@
               *ngIf="request.hasEditted"
               [(visible)]="isShowModal"
               [editRequest]="request"
+              (editedRequestEventEmitter)="onEditRequest($event)"
             >
+            <!-- (editedRequestE) -->
             </app-request-edit>
           </ng-container>
 

@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, OnChanges, EventEmitter } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { CurentUserService } from '../../curent-user.service';
 import { patternValidator } from 'src/app/shared/pattern-validator';
 import { RequestService } from '../request.service';
 
@@ -28,41 +27,38 @@ import { RequestService } from '../request.service';
   ]
 })
 export class RequestEditComponent implements OnInit {
+
   @Input() visible: boolean;
   @Input() editRequest: any;
   @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() editedRequestEventEmitter: EventEmitter<any> = new EventEmitter<any>();
   public editedRequest: FormGroup;
-  // public currentUser: any;
-  // public currentTime: any;
 
   constructor(
-    private curentUserService: CurentUserService,
-    // private requestService: RequestService
+    private requestService: RequestService
   ) { }
 
   ngOnInit() {
-    // this.curentUserService.getCurrentUser().subscribe((data) => {
-    //   this.currentUser = data;
-    // });
-    // const currentTime = new Date();
-    // this.currentTime = this.setTimeFormatToInputDateTimeLocal(currentTime);
-    // this.editRequest.map((request) => {
-    //   request =this.setTimeFormatToInputDateTimeLocal(currentTime);
-    //   return request;
-    // });
     this.createEditedRequest();
-    console.log(this.editedRequest.value);
   }
+
   // 2019-07-30T07:26:00.000Z => format_value Input
   private fromJsonApiDateToDateTime(formatValueApiResponse: string) {
 
     const timeObj = new Date(formatValueApiResponse);
 
-    const hours = timeObj.getHours();
-    const mins = timeObj.getMinutes();
-    const date = timeObj.getDate();
+    let date = timeObj.getDate().toString();
+    date = (date.length === 1) ? `0${date}` : date;
+
     let month = (timeObj.getMonth() + 1).toString();
     month = (month.length === 1) ? `0${month}` : month;
+
+    let mins = timeObj.getMinutes().toString();
+    mins = (mins.length === 1) ? `0${mins}` : mins;
+
+    let hours = timeObj.getHours().toString();
+    hours = (hours.length === 1) ? `0${hours}` : hours;
+
     const year = timeObj.getFullYear();
     return `${year}-${month}-${date}T${hours}:${mins}`;
   }
@@ -76,7 +72,7 @@ export class RequestEditComponent implements OnInit {
     this.editedRequest = new FormGroup({
       id: new FormControl(
         {
-          value: this.editRequest._id,
+          value: this.editRequest.createdBy._id,
           disabled: true
         },
         [
@@ -85,7 +81,7 @@ export class RequestEditComponent implements OnInit {
       ),
       name: new FormControl(
         {
-          value: this.editRequest.name,
+          value: this.editRequest.createdBy.name,
           disabled: true
         },
         [
@@ -125,9 +121,15 @@ export class RequestEditComponent implements OnInit {
       )
     });
   }
+
   onEditRequest() {
     const request = this.editedRequest.value;
-    request.id = this.editRequest._id;
-    console.log('suỬA NHÉ', request);
+    request._id = this.editRequest._id;
+
+    this.requestService.updateARequest(request).subscribe(data => {
+      this.editedRequestEventEmitter.emit(data);
+      // console.log('Nomal User edited: ', data);
+    });
+    this.closeModal();
   }
 }

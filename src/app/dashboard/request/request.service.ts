@@ -39,28 +39,14 @@ export class RequestService {
     );
   }
 
-  updateARequest(
+  updateARequestForAdmin(
     id: string,
-    // checkTime,
-    // compensationFromTime,
-    // compensationToTime,
-    // createdAt,
-    // createdBy,
-    // reason,
     status: string
-    //, type
   ) {
     return this.http.put(
       this.buildUrl('requests/' + id),
       {
-        // checkTime,
-        // compensationFromTime,
-        // compensationToTime,
-        // createdAt,
-        // createdBy,
-        // reason,
-        status,
-        // type
+        status
       },
       {
         headers: this.buildHeader(this.token)
@@ -68,27 +54,32 @@ export class RequestService {
     );
   }
 
-  _updateARequest_version_full(request) {
-    if (request.checkTime) {
-      request.checkTime = request.checkTime;
-    }
-    if (request.compensationFromTime) {
-      request.compensationFromTime = request.compensationFromTime;
-    }
-    if (request.compensationToTime) {
-      request.compensationToTime = request.compensationToTime;
-    }
-    if (request.reason) {
-      request.reason = request.reason;
-    }
-    if (request.status) {
-      request.status = request.status;
-    }
-    if (request.type) {
-      request.type = request.type;
-    }
+  updateARequestForNomalUser({
+    id,
+    type,
+    checkTime,
+    compensationFromTime,
+    compensationToTime,
+    reason
+  }) {
     return this.http.put(
-      this.buildUrl('requests/' + request.id),
+      this.buildUrl('requests/' + id),
+      {
+        type,
+        checkTime,
+        compensationFromTime,
+        compensationToTime,
+        reason
+      },
+      {
+        headers: this.buildHeader(this.token)
+      }
+    );
+  }
+
+  updateARequest(request) {
+    return this.http.put(
+      this.buildUrl('requests/' + request._id),
       request,
       {
         headers: this.buildHeader(this.token)

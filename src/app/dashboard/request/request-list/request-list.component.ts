@@ -26,20 +26,23 @@ export class RequestListComponent implements OnInit {
         request.hasSeeDetail = false;
         return request;
       });
-      // this.requestService.getAddedRequest().subscribe(data => console.log(data));
     }
   }
 
   handleStatusChange(id: string, e: any) {
-    const type = e.target.value.toString();
+    // handleStatusChange(_id: string, e: any) {
+    const status = e.target.value.toString();
     // API, edit for Admin
-    this.requestService.updateARequest(id, type).subscribe((data) => {
-      console.log(data);
+    // this.requestService.updateARequestForAdmin(id, type).subscribe((data) => {
+    //   console.log('Admin edited: ', data);
+    // });
+    this.requestService.updateARequest({ _id : id, status}).subscribe(data => {
+      console.log('Admin edited: ', data);
     });
 
     // VIEW
     const changedRequest = this.allRequests.filter(request => request._id === id)[0];
-    changedRequest.status = type;
+    changedRequest.status = status;
   }
 
   openModalEdit(id: string) {
@@ -67,5 +70,22 @@ export class RequestListComponent implements OnInit {
     if (hasDelete) {
       this.allRequests = this.allRequests.filter((user) => user._id !== id);
     }
+  }
+
+  onEditRequest(req) {
+    console.log(this.allRequests);
+
+    console.log(req);
+    const editedReq = this.allRequests.filter(request => request._id === req._id)[0];
+    // editedReq = {...req}; why not works :((
+    editedReq.checkTime = req.checkTime;
+    editedReq.compensationFromTime = req.compensationFromTime;
+    editedReq.compensationToTime = req.compensationToTime;
+    editedReq.createdAt = req.createdAt;
+    editedReq.createdBy = req.createdBy;
+    editedReq.reason = req.reason;
+    editedReq.status = req.status;
+    editedReq.type = req.type;
+    editedReq._id = req._id;
   }
 }
