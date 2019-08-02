@@ -1,0 +1,50 @@
+<div class="request-filter">
+  <div class="form-group form-inline mb-0">
+    <label for="month">Month: </label>
+    <select class="custom-select request-filter__month ml-3"
+      [(ngModel)]="month"
+    >
+      <option value="">All</option>
+      <option value="01">Jan</option>
+      <option value="02">Feb</option>
+      <option value="03">Mar</option>
+      <option value="04">Apr</option>
+      <option value="05">May</option>
+      <option value="06">Jun</option>
+      <option value="07">Jul</option>
+      <option value="08">Aug</option>
+      <option value="09">Sep</option>
+      <option value="10">Oct</option>
+      <option value="11">Nov</option>
+      <option value="12">Dev</option>
+    </select>
+  </div>
+  <div class="form-group form-inline mb-0">
+    <label for="status">Type: </label>
+    <select class="custom-select request-filter__status ml-3"
+      [(ngModel)]="type"
+    >
+      <option value="">All</option>
+      <option value="in_late">In late</option>
+      <option value="leave_early">Leave early</option>
+      <option value="off">Off</option>
+      <option value="resign">Resign</option>
+    </select>
+  </div>
+  <div class="form-group form-inline mb-0">
+    <label for="status">Status: </label>
+    <select class="custom-select request-filter__status ml-3"
+      [(ngModel)]="status"
+    >
+      <option value="">All</option>
+      <option value="pending">Pending</option>
+      <option value="approved">Approve</option>
+      <option value="rejected">Reject</option>
+    </select>
+  </div>
+  <button
+    (click)="filterRequests()"
+  >
+    <img alt="trash_icon" src="../../../../assets/images/btn/filter.png" width="40px"/>
+  </button>
+</div>

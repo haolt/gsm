@@ -1,0 +1,18 @@
+.request-filter {
+    float: left;
+    display: flex;
+}
+.request-filter .form-group {
+    margin-right: 2em;
+}
+button, button:hover, button:focus {
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+label {
+    font-size: .9em;
+    color: #333;
+    font-weight: 600;
+}

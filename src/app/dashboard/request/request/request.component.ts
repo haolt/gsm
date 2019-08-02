@@ -14,6 +14,7 @@ export class RequestComponent implements OnInit {
   public curentUser: any;
   public isAdmin: boolean;
   public allRequests: any;
+  public allRequestsResult: any;
 
   constructor(
     private requestService: RequestService,
@@ -23,8 +24,9 @@ export class RequestComponent implements OnInit {
   private getAllRequests() {
     this.requestService.getAllRequests().subscribe((data) => {
       this.allRequests = data;
-      this.allRequests = this.allRequests.reverse();
-      this.checkIsAdminToFilterRequest(this.curentUser, this.allRequests);
+      this.allRequestsResult =  data;
+      this.allRequestsResult = this.allRequestsResult.reverse();
+      this.checkIsAdminToFilterRequest(this.curentUser, this.allRequestsResult);
     });
   }
 
@@ -39,7 +41,7 @@ export class RequestComponent implements OnInit {
 
   private checkIsAdminToFilterRequest(curentUser, allRequests) {
     if (curentUser.role !== 'admin') {
-      this.allRequests = allRequests.filter(request => request.createdBy._id === curentUser._id);
+      this.allRequestsResult = allRequests.filter(request => request.createdBy._id === curentUser._id);
     }
   }
 
@@ -48,9 +50,19 @@ export class RequestComponent implements OnInit {
   }
 
   onAddedRequest(request) {
-    // this.requestService.publishAddedRequest(request);
-    this.allRequests.push(request);
-    this.allRequests = this.allRequests.reverse();
-    // console.log(this.allRequests);
+    this.allRequestsResult.push(request);
+    this.allRequestsResult = this.allRequestsResult.reverse();
+  }
+
+  onFilterFields(filterFields) {
+    this.allRequests = this.allRequests.map((req) => {
+      req.createdAtMonth = req.createdAt.slice(5, 7);
+      return req;
+    });
+
+    this.allRequestsResult = this.allRequests.filter(req => req.createdAtMonth.includes(filterFields.month));
+    this.allRequestsResult =  this.allRequestsResult.filter(req => req.status.includes(filterFields.status));
+    this.allRequestsResult =  this.allRequestsResult.filter(req => req.type.includes(filterFields.type));
+    this.checkIsAdminToFilterRequest(this.curentUser, this.allRequestsResult);
   }
 }

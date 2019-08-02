@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -14,16 +14,18 @@ import { TypePipe } from './type.pipe';
 import { RequestEditComponent } from './request-edit/request-edit.component';
 import { RequestDetailComponent } from './request-detail/request-detail.component';
 import { RequestDeleteComponent } from './request-delete/request-delete.component';
+import { RequestFilterComponent } from './request-filter/request-filter.component';
 
 @NgModule({
-  declarations: [RequestComponent, RequestAddComponent, RequestListComponent, TimePipe, TypePipe, RequestEditComponent, RequestDetailComponent, RequestDeleteComponent],
+  declarations: [RequestComponent, RequestAddComponent, RequestListComponent, TimePipe, TypePipe, RequestEditComponent, RequestDetailComponent, RequestDeleteComponent, RequestFilterComponent],
   imports: [
     CommonModule,
     HttpClientModule,
     RequestRoutingModule,
     SharedModule,
     MultilangsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class RequestModule { }

@@ -1,4 +1,4 @@
-.announce {
+.request {
   padding: 1em 0;
 }
 button {
@@ -7,4 +7,6 @@ button {
   padding: 0;
   margin-bottom: 1.5em;
   float: right;
+}
+.request__top {
 }

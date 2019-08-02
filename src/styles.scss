@@ -61,3 +61,14 @@ option,
 a, a:hover, a:focus {
   text-decoration: none;
 }
+
+.page-404 {
+    background: url(https://foxythemes.net/preview/products/beagle/assets/img/404-bg.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    min-height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

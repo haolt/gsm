@@ -1,9 +1,12 @@
 <app-search-form [title]="title">
 </app-search-form>
-<div class="announce">
+<div class="request">
   <!-- <router-outlet></router-outlet> -->
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 my-2">
+      <app-request-filter
+        (filterFieldsEventEmitter)="onFilterFields($event)"
+      ></app-request-filter>
       <button (click)="openModal()"
         *ngIf="!isAdmin"
       >
@@ -13,8 +16,10 @@
         (addedRequestEventEmitter)="onAddedRequest($event)"
       >
       </app-request-add>
+    </div>
+    <div class="col-md-12">
       <app-request-list
-        [allRequests]="allRequests"
+        [allRequests]="allRequestsResult"
         [isAdmin]="isAdmin"
       ></app-request-list>
     </div>
