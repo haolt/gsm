@@ -1,13 +1,14 @@
-<ng-container *ngIf="allRequests.length; else noRequestResult">
+<ng-container *ngIf="allRequests?.length; else noRequestResult">
   <table class="table table-striped table-bordered table-hover table-responsive request-list">
     <thead>
       <tr>
         <th scope="col" rowSpan="2">
           <div class="col-auto p-0">
-            <div class="custom-control custom-checkbox">
+            No.
+            <!-- <div class="custom-control custom-checkbox">
               <input type="checkbox" class="custom-control-input" id="customControlAutosizing"/>
               <label class="custom-control-label" for="customControlAutosizing"> No.</label>
-            </div>
+            </div> -->
           </div>
         </th>
         <th scope="col" rowSpan="2">Name</th>
@@ -27,12 +28,13 @@
     <tbody>
       <tr *ngFor="let request of allRequests; let i = index">
         <th scope="row">
-          <div class="custom-control custom-checkbox">
+          {{ i + 1 }}
+          <!-- <div class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" id="{{ request._id }}"
               [checked]="request.hasChecked"
             />
             <label class="custom-control-label" for="{{ request._id }}">{{ i + 1 }}</label>
-          </div>
+          </div> -->
         </th>
         <td>
           <a class="user" [routerLink]="['/dashboard', 'users', request.createdBy._id]">

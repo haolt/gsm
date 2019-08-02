@@ -72,3 +72,14 @@ a, a:hover, a:focus {
     justify-content: center;
     align-items: center;
 }
+
+img {
+  transform: scale(1);
+  transition: .2s;
+}
+
+img:hover {
+  transform: scale(1.1);
+  transition: .2s;
+}
+

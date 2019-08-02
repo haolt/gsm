@@ -1,11 +1,12 @@
 <app-search-form [title]="title">
 </app-search-form>
 <div class="announce">
-  {{ keywords }}
   <!-- <router-outlet></router-outlet> -->
   <div class="row">
     <div class="col-md-8">
-      <app-announce-add></app-announce-add>
+      <app-announce-add
+        [currentUser]="currentUser"
+      ></app-announce-add>
       <app-announce-list></app-announce-list>
     </div>
     <div class="col-md-4">

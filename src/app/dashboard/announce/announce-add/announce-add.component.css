@@ -1,3 +1,7 @@
+.announce--active {
+  box-shadow: 5px 5px 20px #8c8a8a87;
+}
+
 .announce__title {
   color: #333;
   font-size: .8em;
@@ -8,6 +12,8 @@
 .announce-add {
   border-bottom: 1px solid #80808047;
   padding-bottom: 1em;
+  display: flex;
+  justify-content: space-between;
 }
 
 .announce-add__message {
@@ -34,3 +40,24 @@
   cursor: pointer;
 }
 
+.announce-add__content{
+  padding: .5em 0;
+}
+
+button.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 8px 10px;
+}
+
+.announce-add__assign {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 48em) {
+  .announce-add__assign {
+    display: block;
+  }
+}

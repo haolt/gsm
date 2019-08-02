@@ -6,6 +6,7 @@ import { RequestService } from './../request.service';
   templateUrl: './request-list.component.html',
   styleUrls: ['./request-list.component.css']
 })
+
 export class RequestListComponent implements OnInit {
 
   @Input() allRequests: any;
