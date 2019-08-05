@@ -8,7 +8,7 @@
     </h3>
     <button type="button" class="close"
       *ngIf="isShowAddForm"
-      (click)="toggleAddAnnounce()"
+      (click)="isShowAddForm = false"
     >
       &times;
     </button>
@@ -21,8 +21,9 @@
         <img src="{{ currentUser?.avatar }}"
           alt="avatar" width="35px" height="30px" class="rounded-circle"
         />
-        <span
-          class="announce-add__message">
+        <span *ngIf="!isShowAddForm"
+          class="announce-add__message"
+        >
           What do you think?
         </span>
       </div>
@@ -30,28 +31,42 @@
 
     <ng-container *ngIf="isShowAddForm; else closeForm">
       <div class="announce-add__content">
-        <div class="announce-add__assign">
-          <label for="assignTo"><b>Assign to: </b></label>
-          <div class="custom-control custom-checkbox mb-3" id="assignTo">
-            <input type="checkbox" class="custom-control-input" id="toAll"/>
-            <label class="custom-control-label" for="toAll">
-              All
-            </label>
-          </div>
-          <div class="custom-control custom-checkbox mb-3" id="assignTo"
-            *ngFor="let division of allDivisions"
-          >
-            <input type="checkbox" class="custom-control-input" id="{{ division._id }}"/>
-            <label class="custom-control-label" for="{{ division._id }}">
-              {{ division.name }}
-            </label>
-          </div>
-        </div>
-        <button class="btn btn-primary btn-block"
-          (click)="toggleAddAnnounce()"
+
+        <form [formGroup]="newAnnounce"
+          (ngSubmit)="onAddAnnounce()"
         >
-          Publish
-        </button>
+          <div class="announce-add__assign">
+            <label for="assignTo"><b>TO: </b></label>
+            <div class="custom-control custom-checkbox mb-3" id="assignTo">
+              <input type="checkbox" class="custom-control-input" id="toAll" 
+              />
+              <label class="custom-control-label" for="toAll">
+                All
+              </label>
+            </div>
+            <div class="custom-control custom-checkbox mb-3" id="assignTo"
+              *ngFor="let division of allDivisions"
+            >
+              <input type="checkbox" class="custom-control-input" id="{{ division._id }}"
+                [checked]="division.hasChecked"
+                (change)="onChangeADivision(division._id)"
+              />
+              <label class="custom-control-label" for="{{ division._id }}">
+                {{ division.name }}
+              </label>
+            </div>
+          </div>
+          <ckeditor [editor]="decoupledEditor"
+            [config]="config"
+            formControlName="content"
+            (ready)="onReady($event)"
+          ></ckeditor>
+          <button type="submit" class="btn btn-primary"
+            [disabled]="newAnnounce.invalid"
+          >
+            Publish
+          </button>
+        </form>
       </div>
     </ng-container>
     <ng-template #closeForm>

@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 import { AnnounceRoutingModule } from './announce-routing.module';
 import { AnnounceComponent } from './announce/announce.component';
@@ -8,7 +10,6 @@ import { AnnounceAddComponent } from './announce-add/announce-add.component';
 import { AnnounceListComponent } from './announce-list/announce-list.component';
 import { AnnounceItemComponent } from './announce-item/announce-item.component';
 import { MultilangsModule } from 'src/app/multilangs/multilangs.module';
-// import { AnnounceComponent } from './announce/announce.component';
 
 @NgModule({
   declarations: [AnnounceComponent, AnnounceAddComponent, AnnounceListComponent, AnnounceItemComponent],
@@ -16,7 +17,9 @@ import { MultilangsModule } from 'src/app/multilangs/multilangs.module';
     CommonModule,
     AnnounceRoutingModule,
     SharedModule,
-    MultilangsModule
+    MultilangsModule,
+    ReactiveFormsModule,
+    CKEditorModule
   ]
 })
 export class AnnounceModule { }
