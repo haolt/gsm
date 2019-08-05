@@ -17,6 +17,9 @@ app.use('/divisions', DivisionController);
 var RequestController = require(__root + 'routes/request/RequestController');
 app.use('/requests', RequestController);
 
+var AnnounceController = require(__root + 'routes/announce/AnnounceController');
+app.use('/announces', AnnounceController);
+
 // var TypeController = require(__root + 'routes/request/type/TypeController');
 // app.use('/requests/types', TypeController);
 

@@ -38,7 +38,9 @@
           <div class="announce-add__assign">
             <label for="assignTo"><b>TO: </b></label>
             <div class="custom-control custom-checkbox mb-3" id="assignTo">
-              <input type="checkbox" class="custom-control-input" id="toAll" 
+              <input type="checkbox" class="custom-control-input" id="toAll"
+                (change)="onChangeCheckAll()"
+                [checked]="hasCheckedAll"
               />
               <label class="custom-control-label" for="toAll">
                 All

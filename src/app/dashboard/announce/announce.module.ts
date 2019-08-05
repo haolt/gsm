@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 import { AnnounceRoutingModule } from './announce-routing.module';
@@ -19,7 +20,8 @@ import { MultilangsModule } from 'src/app/multilangs/multilangs.module';
     SharedModule,
     MultilangsModule,
     ReactiveFormsModule,
-    CKEditorModule
+    CKEditorModule,
+    HttpClientModule
   ]
 })
 export class AnnounceModule { }

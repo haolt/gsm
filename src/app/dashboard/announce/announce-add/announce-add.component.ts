@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 
 import * as DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AnnounceService } from './../announce.service';
 
 @Component({
   selector: 'app-announce-add',
@@ -25,9 +26,11 @@ export class AnnounceAddComponent implements OnInit {
     placeholder: 'What do you think?'
   };
 
+  public hasCheckedAll = true;
 
   constructor(
-    private divisionService: DivisionService
+    private divisionService: DivisionService,
+    private announceService: AnnounceService
   ) { }
 
   ngOnInit() {
@@ -61,24 +64,49 @@ export class AnnounceAddComponent implements OnInit {
         ]
       ),
       createdBy: new FormControl(this.currentUser),
-      voted: new FormControl([])
+      votes: new FormControl([])
     });
   }
 
   public onAddAnnounce() {
     this.isShowAddForm = !this.isShowAddForm;
-    console.log(this.newAnnounce.value);
+    this.announceService.createAnAnnounce(this.newAnnounce.value).subscribe(
+      (data) => {
+        this.initNewAnnounceForm();
+      },
+      (errs) => {
+        this.announceService.handleError(errs);
+      }
+    );
   }
 
   onChangeADivision(id) {
-    const assignToArr = this.newAnnounce.value.assignTo;
-    if ( assignToArr.includes(id)) {
-      this.newAnnounce.value.assignTo = assignToArr.filter((divId) => divId !== id);
+    if ( this.newAnnounce.value.assignTo.includes(id)) {
+      this.newAnnounce.value.assignTo = this.newAnnounce.value.assignTo.filter((divId) => divId !== id);
     } else {
-      assignToArr.push(id);
+      this.newAnnounce.value.assignTo.push(id);
     }
-
-    console.log(this.newAnnounce.value.assignTo);
+    this.checkStatusCheckAll();
   }
 
+  onChangeCheckAll() {
+    this.hasCheckedAll = !this.hasCheckedAll;
+    // VIEW
+    this.allDivisions = this.allDivisions.map((division) => {
+      division.hasChecked = this.hasCheckedAll;
+      return division;
+    });
+
+    // LOGIC
+    this.newAnnounce.value.assignTo = [];
+    if (this.hasCheckedAll) {
+      this.allDivisions.map((division) => {
+        this.newAnnounce.value.assignTo.push(division._id);
+      });
+    }
+  }
+
+  private checkStatusCheckAll() {
+    this.hasCheckedAll = (this.newAnnounce.value.assignTo.length === this.allDivisions.length) ? true : false;
+  }
 }
