@@ -13,7 +13,8 @@ router.post('/', function (req, res) {
             createdBy : req.body.createdBy,
             assignTo : req.body.assignTo,
             content : req.body.content,
-            votes : req.body.votes
+            votes : req.body.votes,
+            createdAt : req.body.createdAt,
         },
         function (err, announce) {
             if (err) return res.status(500).send("There was a problem adding the information to the database.");

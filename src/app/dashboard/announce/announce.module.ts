@@ -8,12 +8,10 @@ import { AnnounceRoutingModule } from './announce-routing.module';
 import { AnnounceComponent } from './announce/announce.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AnnounceAddComponent } from './announce-add/announce-add.component';
-import { AnnounceListComponent } from './announce-list/announce-list.component';
-import { AnnounceItemComponent } from './announce-item/announce-item.component';
 import { MultilangsModule } from 'src/app/multilangs/multilangs.module';
 
 @NgModule({
-  declarations: [AnnounceComponent, AnnounceAddComponent, AnnounceListComponent, AnnounceItemComponent],
+  declarations: [AnnounceComponent, AnnounceAddComponent],
   imports: [
     CommonModule,
     AnnounceRoutingModule,

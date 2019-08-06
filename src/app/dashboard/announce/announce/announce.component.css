@@ -1,3 +1,62 @@
 .announce {
   padding: 1em 0;
 }
+
+.announce-item {
+  margin: .5em 0;
+}
+.announce-list__target,
+.announce-list_username {
+  display: inline;
+  font-weight: 600;
+  color: #2851A3;
+  font-size: 1em;
+}
+.announce-list__title img {
+  margin: 0 5px 4px 5px;
+}
+.announce-list__options {
+  display: flex;
+  justify-content: space-between;
+}
+.announce-list__options button {
+  flex: 1;
+}
+.announce-list__content {
+  color: #1d2129e0;
+  font-size: .9em;
+  font-family: 'Roboto', sans-serif;
+  margin: 2em 0 1.5em;
+  line-height: 26px;
+}
+
+.announce-item {
+  position: relative;
+}
+
+.announce-item__options {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  opacity: 0;
+  transition: .2s;
+  cursor: pointer;
+  width: 20px;
+}
+.announce-item:hover .announce-item__options {
+  opacity: .3;
+  transition: .2s;
+}
+
+.announce-list__title .created-date {
+  position: absolute;
+  bottom: -1.5em;
+  left: .5em;
+  color: #00000057;
+  font-size: .7em;
+  font-style: italic;
+}
+
+.announce-list__title {
+  position: relative;
+}

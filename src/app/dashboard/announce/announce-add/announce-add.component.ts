@@ -1,11 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DivisionService } from 'src/app/dashboard/division/division.service';
 import { Subscription } from 'rxjs';
 
 import * as DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AnnounceService } from './../announce.service';
-import { checklistValidator } from '../checklist-validator';
 
 @Component({
   selector: 'app-announce-add',
@@ -15,6 +14,8 @@ import { checklistValidator } from '../checklist-validator';
 export class AnnounceAddComponent implements OnInit {
 
   @Input() currentUser: any;
+  @Output() addedAnnounceEventEmitter = new EventEmitter();
+
   public isShowAddForm: boolean;
   public allDivisions: any;
   public subscription: Subscription;
@@ -80,8 +81,10 @@ export class AnnounceAddComponent implements OnInit {
   public onAddAnnounce() {
     this.isShowAddForm = !this.isShowAddForm;
     this.getCheckedItemList();
+    this.newAnnounce.value.createdAt = new Date();
     this.announceService.createAnAnnounce(this.newAnnounce.value).subscribe(
       (data) => {
+        this.addedAnnounceEventEmitter.emit(data);
         this.initNewAnnounceForm();
         this.getCheckedItemList();
       },

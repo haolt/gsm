@@ -6,8 +6,46 @@
     <div class="col-md-8">
       <app-announce-add
         [currentUser]="currentUser"
+        (addedAnnounceEventEmitter)="onAddNewAnnounce($event)"
       ></app-announce-add>
-      <app-announce-list></app-announce-list>
+
+      <div class="card announce-item"
+        *ngFor="let announce of allAnnounces"
+      >
+        <img class="announce-item__options" alt="options"
+          src="../../../../assets/images/directs/options.png"/>
+        <div class="card-body">
+          <div class="announce-list__title">
+            <img src="{{ announce.createdBy.avatar }}"
+              alt="avatar" width="35px" height="30px" class="rounded-circle"
+            />
+            <span class="announce-list_username">{{ announce.createdBy.name }}</span>
+            <img src="../../../../assets/images/directs/next.png" width="15px"/>
+            <div class="announce-list__target">
+              <ng-container *ngIf="announce.assignTo?.length === 5; else notToAll">
+                <span>TO ALL</span>
+              </ng-container>
+              <ng-template #notToAll>
+                <span *ngFor="let division of announce.assignTo; let i = index">{{ division.name }}
+                  <i *ngIf="i !== announce.assignTo.length - 1">, </i>
+                </span>
+              </ng-template>
+            </div>
+            <!-- <span class="created-date">Posted at 16:59 | July 31, 2019</span> -->
+            <span class="created-date">Posted at {{ announce.createdAt | time }}</span>
+          </div>
+          <div class="announce-list__content"
+            [innerHTML]="announce.content"
+          ></div>
+          <div class="announce-list__options">
+            <button class="btn btn-light">{{ announce.votes?.length }} reaction</button>
+            <!-- <button class="btn btn-light">Comment</button> -->
+            <button class="btn btn-light" disabled>Save</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- <app-announce-list></app-announce-list> -->
     </div>
     <div class="col-md-4">
       <app-statistic-info></app-statistic-info>

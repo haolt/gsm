@@ -3,7 +3,8 @@ var AnnounceSchema = new mongoose.Schema({
   createdBy: Object,
   assignTo: Array,
   content: String,
-  votes: Array
+  votes: Array,
+  createdAt: Date
 });
 mongoose.model('Announce', AnnounceSchema);
 

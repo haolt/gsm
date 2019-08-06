@@ -6,13 +6,15 @@ import { SearchFormComponent } from './search-form/search-form.component';
 import { StatisticInfoComponent } from './statistic-info/statistic-info.component';
 import { ModalComponent } from './modal/modal.component';
 import { DivisionCheckboxComponent } from './division-checkbox/division-checkbox.component';
+import { TimePipe } from './time.pipe';
 
 @NgModule({
   declarations: [
     SearchFormComponent,
     StatisticInfoComponent,
     ModalComponent,
-    DivisionCheckboxComponent
+    DivisionCheckboxComponent,
+    TimePipe
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { DivisionCheckboxComponent } from './division-checkbox/division-checkbox
     SearchFormComponent,
     StatisticInfoComponent,
     ModalComponent,
-    DivisionCheckboxComponent
+    DivisionCheckboxComponent,
+    TimePipe
   ]
 })
 export class SharedModule { }
