@@ -5,12 +5,14 @@ import { FormsModule } from '@angular/forms';
 import { SearchFormComponent } from './search-form/search-form.component';
 import { StatisticInfoComponent } from './statistic-info/statistic-info.component';
 import { ModalComponent } from './modal/modal.component';
+import { DivisionCheckboxComponent } from './division-checkbox/division-checkbox.component';
 
 @NgModule({
   declarations: [
     SearchFormComponent,
     StatisticInfoComponent,
-    ModalComponent
+    ModalComponent,
+    DivisionCheckboxComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { ModalComponent } from './modal/modal.component';
   exports: [
     SearchFormComponent,
     StatisticInfoComponent,
-    ModalComponent
+    ModalComponent,
+    DivisionCheckboxComponent
   ]
 })
 export class SharedModule { }

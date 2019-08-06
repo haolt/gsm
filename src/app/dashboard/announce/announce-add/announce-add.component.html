@@ -39,8 +39,9 @@
             <label for="assignTo"><b>TO: </b></label>
             <div class="custom-control custom-checkbox mb-3" id="assignTo">
               <input type="checkbox" class="custom-control-input" id="toAll"
-                (change)="onChangeCheckAll()"
-                [checked]="hasCheckedAll"
+                formControlName="masterSelected"
+                (change)="checkUncheckAll()"
+                [checked]="newAnnounce.value.masterSelected"
               />
               <label class="custom-control-label" for="toAll">
                 All
@@ -50,14 +51,15 @@
               *ngFor="let division of allDivisions"
             >
               <input type="checkbox" class="custom-control-input" id="{{ division._id }}"
-                [checked]="division.hasChecked"
-                (change)="onChangeADivision(division._id)"
+                (change)="isAllSelected(division._id)"
+                [checked]="division.isSelected"
               />
               <label class="custom-control-label" for="{{ division._id }}">
                 {{ division.name }}
               </label>
             </div>
           </div>
+          <!-- You must be choose AT LEAST 1 division -->
           <ckeditor [editor]="decoupledEditor"
             [config]="config"
             formControlName="content"

@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import * as DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AnnounceService } from './../announce.service';
+import { checklistValidator } from '../checklist-validator';
 
 @Component({
   selector: 'app-announce-add',
@@ -26,7 +27,9 @@ export class AnnounceAddComponent implements OnInit {
     placeholder: 'What do you think?'
   };
 
-  public hasCheckedAll = true;
+  // Check Division
+  public checklist: any;
+  public checkedList: any;
 
   constructor(
     private divisionService: DivisionService,
@@ -35,14 +38,14 @@ export class AnnounceAddComponent implements OnInit {
 
   ngOnInit() {
     this.isShowAddForm = false;
-    this.initNewAnnounceForm();
     this.subscription = this.divisionService.getAllDivisions().subscribe((data) => {
       this.allDivisions = data;
       this.allDivisions = this.allDivisions.map((div) => {
-        div.hasChecked = true;
-        this.newAnnounce.value.assignTo.push(div._id);
+        div.isSelected = true;
         return div;
       });
+      this.initNewAnnounceForm();
+      this.getCheckedItemList();
     });
   }
 
@@ -55,7 +58,12 @@ export class AnnounceAddComponent implements OnInit {
 
   private initNewAnnounceForm() {
     this.newAnnounce = new FormGroup({
-      assignTo: new FormControl([]),
+      assignTo: new FormControl(
+        this.allDivisions
+        // [
+        //   checklistValidator
+        // ]
+      ),
       content: new FormControl(
         '',
         [
@@ -64,15 +72,18 @@ export class AnnounceAddComponent implements OnInit {
         ]
       ),
       createdBy: new FormControl(this.currentUser),
-      votes: new FormControl([])
+      votes: new FormControl([]),
+      masterSelected: new FormControl(true)
     });
   }
 
   public onAddAnnounce() {
     this.isShowAddForm = !this.isShowAddForm;
+    this.getCheckedItemList();
     this.announceService.createAnAnnounce(this.newAnnounce.value).subscribe(
       (data) => {
         this.initNewAnnounceForm();
+        this.getCheckedItemList();
       },
       (errs) => {
         this.announceService.handleError(errs);
@@ -80,33 +91,32 @@ export class AnnounceAddComponent implements OnInit {
     );
   }
 
-  onChangeADivision(id) {
-    if ( this.newAnnounce.value.assignTo.includes(id)) {
-      this.newAnnounce.value.assignTo = this.newAnnounce.value.assignTo.filter((divId) => divId !== id);
-    } else {
-      this.newAnnounce.value.assignTo.push(id);
-    }
-    this.checkStatusCheckAll();
-  }
-
-  onChangeCheckAll() {
-    this.hasCheckedAll = !this.hasCheckedAll;
-    // VIEW
-    this.allDivisions = this.allDivisions.map((division) => {
-      division.hasChecked = this.hasCheckedAll;
-      return division;
+  checkUncheckAll() {
+    this.allDivisions = this.allDivisions.map((item) => {
+      item.isSelected = this.newAnnounce.value.masterSelected;
+      return item;
     });
+    this.getCheckedItemList();
+  }
 
-    // LOGIC
+  isAllSelected(id) {
+
+    const changedDivision = this.allDivisions.filter((div) => div._id === id)[0];
+    changedDivision.isSelected = !changedDivision.isSelected;
+
+    this.newAnnounce.value.masterSelected = this.allDivisions.every( (item) => {
+        return item.isSelected === true;
+    });
+    this.getCheckedItemList();
+  }
+
+  getCheckedItemList() {
     this.newAnnounce.value.assignTo = [];
-    if (this.hasCheckedAll) {
-      this.allDivisions.map((division) => {
-        this.newAnnounce.value.assignTo.push(division._id);
-      });
-    }
+    this.allDivisions.forEach((item) => {
+      if (item.isSelected) {
+        this.newAnnounce.value.assignTo.push(item);
+      }
+    });
   }
 
-  private checkStatusCheckAll() {
-    this.hasCheckedAll = (this.newAnnounce.value.assignTo.length === this.allDivisions.length) ? true : false;
-  }
 }
