@@ -1,0 +1,18 @@
+<p class="add-delete-question">
+  <img alt="warning_icon" src="../../../../assets/images/btn/cancel.png" width="25px">
+  Are you sure that you want to delete
+  <strong>{{ announce.createdBy.name }}</strong>
+  's announce?
+</p>
+<div class="buttons">
+  <button class="btn btn-light"
+    (click)="closeModal()"
+  >
+    Cancel
+  </button>
+  <button class="btn btn-danger"
+    (click)="deleteAnAnnounce()"
+  >
+    Of course
+  </button>
+</div>

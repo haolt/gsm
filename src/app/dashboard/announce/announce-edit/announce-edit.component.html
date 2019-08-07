@@ -10,9 +10,6 @@
     <label for="assignTo"><b>TO: </b></label>
     <div class="custom-control custom-checkbox mb-3" id="assignTo">
       <input type="checkbox" class="custom-control-input" id="toAll"
-        formControlName="masterSelected"
-        (change)="checkUncheckAll()"
-        [checked]="editAnnounce.value.masterSelected"
       />
       <label class="custom-control-label" for="toAll">
         All
@@ -22,9 +19,8 @@
       *ngFor="let division of allDivisions"
     >
       <input type="checkbox" class="custom-control-input" id="{{ division._id }}"
-        (change)="isAllSelected(division._id)"
-        [checked]="division.isSelected"
       />
+      <!-- [checked]="division.isSelected" -->
       <label class="custom-control-label" for="{{ division._id }}">
         {{ division.name }}
       </label>
@@ -39,6 +35,7 @@
   <button type="submit" class="btn btn-primary"
     [disabled]="editAnnounce.invalid"
   >
-    Publish
+    <img alt="save_icon" src="../../../../assets/images/btn/save.png" width="25px">
+    Save
   </button>
 </form>

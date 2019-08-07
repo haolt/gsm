@@ -33,10 +33,16 @@
             <li (click)="announce.isEditable = !announce.isEditable">
                 <img alt="edit_icon" src="../../../../assets/images/btn/edit.png" width="21px"/>
             </li>
-            <li>
+            <li (click)="onOpenModalDelete(announce._id)">
                 <img alt="edit_icon" src="../../../../assets/images/btn/trash.png" width="21px"/>
             </li>
           </ul>
+          <app-modal [(visible)]="announce.isDeleteable">
+            <app-announce-delete
+              [announce]="announce"
+              (closeFormEventEmitter)="onCloseModalDelete($event)"
+            ></app-announce-delete>
+          </app-modal>
           <div class="card-body"
             *ngIf="!announce.isEditable"
           >

@@ -40,12 +40,12 @@ router.get('/', function (req, res) {
 // });
 
 // DELETES A Announces FROM THE DATABASE
-// router.delete('/:id', function (req, res) {
-//     Announce.findByIdAndRemove(req.params.id, function (err, user) {
-//         if (err) return res.status(500).send("There was a problem deleting the user.");
-//         res.status(200).send("User: "+ user.name +" was deleted.");
-//     });
-// });
+router.delete('/:id', function (req, res) {
+    Announce.findByIdAndRemove(req.params.id, function (err, announce) {
+        if (err) return res.status(500).send("There was a problem deleting the user.");
+        res.status(200).send(announce);
+    });
+});
 
 // UPDATES A SINGLE Announces IN THE DATABASE
 // Added VerifyToken middleware to make sure only an authenticated user can put to this route

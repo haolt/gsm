@@ -44,6 +44,7 @@ export class AnnounceComponent implements OnInit, OnDestroy {
         this.allAnnounces.forEach((announce) => {
           announce.isShowDropdownOptions = false;
           announce.isEditable = false;
+          announce.isDeleteable = false;
         });
         this.getParamsToFilter();
       },
@@ -54,10 +55,14 @@ export class AnnounceComponent implements OnInit, OnDestroy {
     );
   }
 
+  onOpenModalDelete(id) {
+    const deletedAnnounce = this.allAnnounces.filter((announce) => announce._id === id)[0];
+    deletedAnnounce.isDeleteable = true;
+  }
+
   private getParamsToFilter() {
     this.activatedRoute.queryParams.subscribe(params => {
       this.keywords = params.s ? params.s.toLowerCase() : '';
-      console.log(this.keywords);
       this.filterAnnounces();
     });
   }
@@ -76,4 +81,13 @@ export class AnnounceComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  onCloseModalDelete({id, hasDelete}) {
+    const deletedAnnounce = this.allAnnounces.filter((announce) => announce._id === id)[0];
+    if (deletedAnnounce ) {
+      deletedAnnounce.isDeleteable = false;
+    }
+    if (hasDelete) {
+      this.allAnnounces = this.allAnnounces.filter((announce) => announce._id !== id);
+    }
+  }
 }

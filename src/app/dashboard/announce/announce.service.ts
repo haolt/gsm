@@ -36,6 +36,15 @@ export class AnnounceService {
     );
   }
 
+  deleteAnAnnounce(id) {
+    return this.http.delete(
+      this.buildUrl('announces/' + id ),
+      {
+        headers: this.buildHeader(this.token)
+      }
+    );
+  }
+
   handleError(err) {
     if (err.error instanceof Error) {
         console.log(`Client side Error: ${ err.error.message }`);
