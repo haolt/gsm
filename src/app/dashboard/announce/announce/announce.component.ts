@@ -74,6 +74,7 @@ export class AnnounceComponent implements OnInit, OnDestroy {
 
   onAddNewAnnounce(announce) {
     this.allAnnounces.push(announce);
+    this.allAnnouncesOriginal.push(announce);
     this.allAnnounces.reverse();
   }
 

@@ -19,12 +19,13 @@
       </div>
 
       <ng-container *ngIf="allAnnounces?.length; else elseNoResult">
-          <div class="card announce-item"
+        <div class="card announce-item"
           *ngFor="let announce of allAnnounces"
         >
           <img class="announce-item__options" alt="options"
             src="../../../../assets/images/directs/options.png"
             (click)="announce.isShowDropdownOptions = !announce.isShowDropdownOptions"
+            *ngIf="(currentUser.role === 'admin') || (currentUser._id === announce.createdBy._id)"
           />
           <ul class="dropdown-options"
             [ngClass]="{'d-none': !announce.isShowDropdownOptions, 'd-block': announce.isShowDropdownOptions}"

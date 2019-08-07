@@ -6,6 +6,7 @@ import { AnnounceService } from './../announce.service';
   templateUrl: './announce-delete.component.html',
   styleUrls: ['./announce-delete.component.css']
 })
+
 export class AnnounceDeleteComponent implements OnInit {
 
   @Input() announce: any;
