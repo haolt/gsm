@@ -1,0 +1,14 @@
+<div class="announce-item__reaction">
+  <button class="btn" title="Downvote"
+    (click)="onVoteForAnnounce()"
+  >
+  <!-- [ngClass]="{'active': isDownvoteActive}" -->
+    <img alt="downvote" src="../../../../assets/images/btn/down.png" width="21px">
+  </button>
+  <span>{{ votes?.length }}</span>
+  <button class="btn" title="Upvote"
+    (click)="onVoteForAnnounce()"
+  >
+    <img alt="upvote" src="../../../../assets/images/btn/up.png" width="21px">
+  </button>
+</div>

@@ -1,0 +1,10 @@
+.announce-item__reaction {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e1e1e14a;
+}
+
+.btn.active img {
+  opacity: .3;
+}

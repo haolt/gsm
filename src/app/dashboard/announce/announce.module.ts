@@ -12,9 +12,10 @@ import { MultilangsModule } from 'src/app/multilangs/multilangs.module';
 import { AnnounceSearchComponent } from './announce-search/announce-search.component';
 import { AnnounceEditComponent } from './announce-edit/announce-edit.component';
 import { AnnounceDeleteComponent } from './announce-delete/announce-delete.component';
+import { AnnounceItemReactionComponent } from './announce-item-reaction/announce-item-reaction.component';
 
 @NgModule({
-  declarations: [AnnounceComponent, AnnounceAddComponent, AnnounceSearchComponent, AnnounceEditComponent, AnnounceDeleteComponent],
+  declarations: [AnnounceComponent, AnnounceAddComponent, AnnounceSearchComponent, AnnounceEditComponent, AnnounceDeleteComponent, AnnounceItemReactionComponent],
   imports: [
     CommonModule,
     AnnounceRoutingModule,

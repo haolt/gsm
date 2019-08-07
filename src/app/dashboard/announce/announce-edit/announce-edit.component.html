@@ -19,8 +19,9 @@
       *ngFor="let division of allDivisions"
     >
       <input type="checkbox" class="custom-control-input" id="{{ division._id }}"
+        [checked]="division.isSelected"
       />
-      <!-- [checked]="division.isSelected" -->
+
       <label class="custom-control-label" for="{{ division._id }}">
         {{ division.name }}
       </label>
@@ -32,10 +33,17 @@
     formControlName="content"
     (ready)="onReady($event)"
   ></ckeditor>
-  <button type="submit" class="btn btn-primary"
-    [disabled]="editAnnounce.invalid"
-  >
-    <img alt="save_icon" src="../../../../assets/images/btn/save.png" width="25px">
-    Save
-  </button>
+  <div class="buttons">
+    <button class="btn btn-light"
+      (click)="closeEditForm()"
+    >
+      Cancel
+    </button>
+    <button type="submit" class="btn btn-primary"
+      [disabled]="editAnnounce.invalid"
+    >
+      <img alt="save_icon" src="../../../../assets/images/btn/save.png" width="25px">
+      Save
+    </button>
+  </div>
 </form>

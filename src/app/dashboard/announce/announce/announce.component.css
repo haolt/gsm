@@ -19,6 +19,11 @@
   display: flex;
   justify-content: space-between;
 }
+
+app-announce-item-reaction {
+  flex: 1;
+}
+
 .announce-list__options button {
   flex: 1;
 }

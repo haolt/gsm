@@ -26,18 +26,25 @@ export class AnnounceEditComponent implements OnInit {
   public checklist: any;
   public checkedList: any;
 
+  @Output() closeFormEventEmitter = new EventEmitter();
   constructor(
     private announceService: AnnounceService
   ) { }
 
   ngOnInit() {
     this.allDivisions = this.allDivisions.map((div) => {
-      div.isSelected = true;
+      div.isSelected = false;
       return div;
     });
     this.initNewAnnounceForm();
     console.log(this.announce);
+    const arrdivisions = this.announce.assignTo;
+    arrdivisions.forEach((division) => {
+      const selectedDivision = this.allDivisions.filter(div => div._id === division._id)[0];
+      selectedDivision.isSelected = true;
+    });
 
+    console.log(this.allDivisions);
   }
 
   public onReady( editor ) {
@@ -64,9 +71,17 @@ export class AnnounceEditComponent implements OnInit {
 
   public onEditAnnounce() {
     // this.getCheckedItemList();
+    this.emitValueToOutside(this.announce._id, null);
     console.log(this.editAnnounce.value);
   }
 
+  closeEditForm() {
+    this.emitValueToOutside(this.announce._id, null);
+  }
+
+  private emitValueToOutside(id: string, editedAnnounce: boolean) {
+    this.closeFormEventEmitter.emit({id, editedAnnounce});
+  }
   // checkUncheckAll() {
   //   this.allDivisions = this.allDivisions.map((item) => {
   //     item.isSelected = this.editAnnounce.value.masterSelected;

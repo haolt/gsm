@@ -70,7 +70,9 @@
               [innerHTML]="announce.content"
             ></div>
             <div class="announce-list__options">
-              <button class="btn btn-light">{{ announce.votes?.length }} reaction</button>
+              <app-announce-item-reaction
+                [announce]="announce"
+              ></app-announce-item-reaction>
               <!-- <button class="btn btn-light">Comment</button> -->
               <button class="btn btn-light" disabled>Save</button>
             </div>
@@ -81,6 +83,7 @@
             <app-announce-edit
               [allDivisions]="allDivisions"
               [announce]="announce"
+              (closeFormEventEmitter)="closeEditForm($event)"
             ></app-announce-edit>
           </div>
         </div>
