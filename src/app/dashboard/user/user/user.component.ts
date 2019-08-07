@@ -28,7 +28,7 @@ export class UserComponent implements OnInit {
     this.curentUserService.getIsAdmin().subscribe((isAdmin) => {
       this.isAdmin = isAdmin;
     });
-    this.userService.getAllUsers().subscribe((data: User) => {
+    this.userService.getAllUsers().subscribe((data) => {
       this.allUsers = data;
       this.allUsersResult = data;
       this.allUsersResult = this.allUsersResult.map((user) => {

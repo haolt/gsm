@@ -46,6 +46,7 @@
 .announce-item:hover .announce-item__options {
   opacity: .3;
   transition: .2s;
+  z-index: 2;
 }
 
 .announce-list__title .created-date {
@@ -59,4 +60,30 @@
 
 .announce-list__title {
   position: relative;
+}
+
+.dropdown-options {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  z-index: 2;
+  top: 3em;
+  right: 1.25rem;
+}
+
+.dropdown-options li {
+  margin-bottom: .5em;
+}
+
+.announce-msg {
+  font-size: .8em;
+}
+
+.announce .page-404 {
+  min-height: 25vh;
+}
+
+.page-404 p {
+  font-size: .9em;
 }

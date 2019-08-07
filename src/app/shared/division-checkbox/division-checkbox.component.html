@@ -1,3 +1,21 @@
-<p>
-  division-checkbox works!
-</p>
+
+  <div class="announce-edit__assign">
+    <div class="custom-control custom-checkbox mb-3" id="assignTo">
+      <input type="checkbox" class="custom-control-input" id="toAll"
+      />
+      <label class="custom-control-label" for="toAll">
+        All
+      </label>
+    </div>
+    <div class="custom-control custom-checkbox mb-3" id="assignTo"
+      *ngFor="let division of allDivisions"
+    >
+      <input type="checkbox" class="custom-control-input" id="{{ division._id }}"
+        [checked]="division.hasChecked"
+        (change)="onChangeADivison(division._id)"
+      />
+      <label class="custom-control-label" for="{{ division._id }}">
+        {{ division.name }}
+      </label>
+    </div>
+  </div>

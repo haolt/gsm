@@ -1,0 +1,44 @@
+<form [formGroup]="editAnnounce"
+  (ngSubmit)="onEditAnnounce()"
+>
+  <div _ngcontent-rjh-c8="" class="announce-add__current-user">
+    <img _ngcontent-rjh-c8="" alt="avatar" class="rounded-circle" height="30px" width="35px"
+      src="{{ announce.createdBy.avatar }}"
+    >
+  </div>
+  <div class="announce-edit__assign">
+    <label for="assignTo"><b>TO: </b></label>
+    <div class="custom-control custom-checkbox mb-3" id="assignTo">
+      <input type="checkbox" class="custom-control-input" id="toAll"
+        formControlName="masterSelected"
+        (change)="checkUncheckAll()"
+        [checked]="editAnnounce.value.masterSelected"
+      />
+      <label class="custom-control-label" for="toAll">
+        All
+      </label>
+    </div>
+    <div class="custom-control custom-checkbox mb-3" id="assignTo"
+      *ngFor="let division of allDivisions"
+    >
+      <input type="checkbox" class="custom-control-input" id="{{ division._id }}"
+        (change)="isAllSelected(division._id)"
+        [checked]="division.isSelected"
+      />
+      <label class="custom-control-label" for="{{ division._id }}">
+        {{ division.name }}
+      </label>
+    </div>
+  </div>
+  <!-- You must be choose AT LEAST 1 division -->
+  <ckeditor [editor]="decoupledEditor"
+    [data]="announce.content"
+    formControlName="content"
+    (ready)="onReady($event)"
+  ></ckeditor>
+  <button type="submit" class="btn btn-primary"
+    [disabled]="editAnnounce.invalid"
+  >
+    Publish
+  </button>
+</form>

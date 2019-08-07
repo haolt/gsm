@@ -9,9 +9,11 @@ import { AnnounceComponent } from './announce/announce.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AnnounceAddComponent } from './announce-add/announce-add.component';
 import { MultilangsModule } from 'src/app/multilangs/multilangs.module';
+import { AnnounceSearchComponent } from './announce-search/announce-search.component';
+import { AnnounceEditComponent } from './announce-edit/announce-edit.component';
 
 @NgModule({
-  declarations: [AnnounceComponent, AnnounceAddComponent],
+  declarations: [AnnounceComponent, AnnounceAddComponent, AnnounceSearchComponent, AnnounceEditComponent],
   imports: [
     CommonModule,
     AnnounceRoutingModule,
