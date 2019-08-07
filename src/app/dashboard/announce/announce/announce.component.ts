@@ -56,14 +56,14 @@ export class AnnounceComponent implements OnInit, OnDestroy {
 
   private getParamsToFilter() {
     this.activatedRoute.queryParams.subscribe(params => {
-      this.keywords = params.s ? params.s : '';
+      this.keywords = params.s ? params.s.toLowerCase() : '';
       console.log(this.keywords);
       this.filterAnnounces();
     });
   }
 
   filterAnnounces() {
-    this.allAnnounces = this.allAnnouncesOriginal.filter(announce => announce.content.includes(this.keywords));
+    this.allAnnounces = this.allAnnouncesOriginal.filter(announce => announce.content.toLowerCase().includes(this.keywords));
     this.allAnnounces.reverse();
   }
 
