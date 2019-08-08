@@ -95,6 +95,7 @@ export class AnnounceComponent implements OnInit, OnDestroy {
   closeEditForm({ id, editedAnnounce }) {
     const announce = this.allAnnounces.filter((ann) => ann._id === id)[0];
     announce.isEditable = false;
+    announce.isShowDropdownOptions = false;
     if (editedAnnounce) {
       announce.assignTo = editedAnnounce.assignTo;
       announce.content = editedAnnounce.content;
