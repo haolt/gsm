@@ -12,26 +12,25 @@
       <input type="text" class="form-control"
         placeholder="Type your keywords"
         [(ngModel)]="keywords"
-        (keyup)="onFilterAnnouncesAfter2Seconds()"
+        (keyup)="onFilterAnnouncesAfter1Seconds()"
       />
     </div>
-    <!-- <app-division-checkbox [allDivisions]="allDivisions"></app-division-checkbox> -->
-    <div class="announce-edit__assign">
-      <div class="custom-control custom-checkbox mb-3" id="assignTo">
-        <input type="checkbox" class="custom-control-input" id="toAll"
-        />
-        <label class="custom-control-label" for="toAll">
-          All
-        </label>
-      </div>
+    <div class="announce-search--advance-btn mb-3"
+      (click)="hasShowSearchAdvance = !hasShowSearchAdvance"
+    >
+      Advanced
+      <img alt="dropdown" src="../../../../assets/images/btn/down.png" width="15px">
+    </div>
+    <div class="announce-edit__assign"
+      [ngClass]="{'active': hasShowSearchAdvance}"
+    >
       <div class="custom-control custom-checkbox mb-3" id="assignTo"
         *ngFor="let division of allDivisions"
       >
-        <input type="checkbox" class="custom-control-input" id="{{ division._id }}"
-          [checked]="division.hasChecked"
+        <input type="checkbox" class="custom-control-input" id="{{ division.abbr }}"
+          (change)="onChangeCheckboxDivison(division.abbr); onFilterAnnounces()"
         />
-        <!-- (change)="onChangeADivison(division._id)" -->
-        <label class="custom-control-label" for="{{ division._id }}">
+        <label class="custom-control-label" for="{{ division.abbr }}">
           {{ division.name }}
         </label>
       </div>

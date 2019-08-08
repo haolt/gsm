@@ -17,7 +17,7 @@ h2:after {
   background: #00808069;
   position: absolute;
   z-index: 2;
-  bottom: 0;
+  bottom: -5px;
   left: 0;
 }
 

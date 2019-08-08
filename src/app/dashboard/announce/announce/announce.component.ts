@@ -21,7 +21,9 @@ export class AnnounceComponent implements OnInit, OnDestroy {
   public allAnnouncesOriginal: any;
   public allDivisions: any;
   private subscription: Subscription;
+  // Filter
   public keywords: string;
+  public sltDivisionsToFiter: string[];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -62,13 +64,20 @@ export class AnnounceComponent implements OnInit, OnDestroy {
 
   private getParamsToFilter() {
     this.activatedRoute.queryParams.subscribe(params => {
+      this.sltDivisionsToFiter = params.division ? params.division.split(' ') : '' ;
       this.keywords = params.s ? params.s.toLowerCase() : '';
+      console.log(this.keywords, this.sltDivisionsToFiter);
       this.filterAnnounces();
     });
   }
 
   filterAnnounces() {
     this.allAnnounces = this.allAnnouncesOriginal.filter(announce => announce.content.toLowerCase().includes(this.keywords));
+    // if (this.sltDivisionsToFiter) {
+    //   this.sltDivisionsToFiter.forEach((divisionAbbr) => {
+    //     this.allAnnounces = this.allAnnounces.filter(announce => announce.assignTo.includes())
+    //   });
+    // }
     this.allAnnounces.reverse();
   }
 

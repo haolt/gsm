@@ -9,6 +9,9 @@ import { Router } from '@angular/router';
 export class AnnounceSearchComponent implements OnInit {
 
   public keywords: string;
+  public selectedDivisions = [];
+  public divisionString: string;
+  public hasShowSearchAdvance = false;
   @Input() allDivisions: any;
 
   constructor(
@@ -18,15 +21,54 @@ export class AnnounceSearchComponent implements OnInit {
   ngOnInit() { }
 
   onFilterAnnounces() {
-    if (this.keywords) {
-      this.router.navigate(['/dashboard', 'announces'], { queryParams: { s: this.keywords }, queryParamsHandling: 'merge'});
+    if (this.keywords && this.divisionString ) {
+      this.router.navigate(
+        ['/dashboard', 'announces'],
+        {
+          queryParams: {
+            s: this.keywords,
+            division: this.divisionString
+          }
+        }
+      );
+    } else if (this.keywords) {
+      this.router.navigate(
+        ['/dashboard', 'announces'],
+        {
+          queryParams: {
+            s: this.keywords
+          }
+        }
+      );
+    } else if (this.divisionString) {
+      this.router.navigate(
+        ['/dashboard', 'announces'],
+        {
+          queryParams: {
+            division: this.divisionString
+          }
+        }
+      );
     } else {
-      this.router.navigate(['/dashboard', 'announces']);
+      this.router.navigate(
+        ['/dashboard', 'announces']
+      );
     }
   }
-  onFilterAnnouncesAfter2Seconds() {
+
+  onChangeCheckboxDivison(abbr) {
+    if (this.selectedDivisions.includes(abbr)) {
+      this.selectedDivisions = this.selectedDivisions.filter(divAbbr => divAbbr !== abbr);
+    } else {
+      this.selectedDivisions.push(abbr);
+    }
+    this.divisionString = this.selectedDivisions.join(' ').trim();
+  }
+
+  onFilterAnnouncesAfter1Seconds() {
     setTimeout(() => {
       this.onFilterAnnounces();
     }, 1000);
   }
+
 }

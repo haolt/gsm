@@ -27,3 +27,22 @@
   width: 25px;
   z-index: -1;
 }
+
+.announce-edit__assign {
+  max-height: 0;
+  overflow: hidden;
+  transition: .4s;
+}
+
+.announce-edit__assign.active {
+  max-height: 50vh;
+  transition: .4s;
+}
+
+.announce-search--advance-btn {
+  display: inline-block;
+  color: #225686;
+  font-size: .8em;
+  cursor: pointer;
+  font-weight: 600;
+}
