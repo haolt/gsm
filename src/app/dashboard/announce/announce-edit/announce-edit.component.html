@@ -1,8 +1,8 @@
 <form [formGroup]="editAnnounce"
   (ngSubmit)="onEditAnnounce()"
 >
-  <div _ngcontent-rjh-c8="" class="announce-add__current-user">
-    <img _ngcontent-rjh-c8="" alt="avatar" class="rounded-circle" height="30px" width="35px"
+  <div class="announce-add__current-user">
+    <img alt="avatar" class="rounded-circle" height="30px" width="35px"
       src="{{ announce.createdBy.avatar }}"
     >
   </div>
@@ -10,6 +10,8 @@
     <label for="assignTo"><b>TO: </b></label>
     <div class="custom-control custom-checkbox mb-3" id="assignTo">
       <input type="checkbox" class="custom-control-input" id="toAll"
+        [checked]="hasSelectAll"
+        (change)="onChangeCheckBoxAllDivision()"
       />
       <label class="custom-control-label" for="toAll">
         All
@@ -20,8 +22,8 @@
     >
       <input type="checkbox" class="custom-control-input" id="{{ division._id }}"
         [checked]="division.isSelected"
+        (change)="onChangeCheckBoxDivision(division._id)"
       />
-
       <label class="custom-control-label" for="{{ division._id }}">
         {{ division.name }}
       </label>

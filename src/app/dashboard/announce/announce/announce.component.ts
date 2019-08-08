@@ -92,8 +92,12 @@ export class AnnounceComponent implements OnInit, OnDestroy {
     }
   }
 
-  closeEditForm({ id, editAnnounce }) {
-    const editedAnnounce = this.allAnnounces.filter((announce) => announce._id === id)[0];
-    editedAnnounce.isEditable = false;
+  closeEditForm({ id, editedAnnounce }) {
+    const announce = this.allAnnounces.filter((ann) => ann._id === id)[0];
+    announce.isEditable = false;
+    if (editedAnnounce) {
+      announce.assignTo = editedAnnounce.assignTo;
+      announce.content = editedAnnounce.content;
+    }
   }
 }

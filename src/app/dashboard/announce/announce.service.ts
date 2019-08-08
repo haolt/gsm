@@ -45,6 +45,16 @@ export class AnnounceService {
     );
   }
 
+  updateAnAnnounce(announce) {
+    return this.http.put(
+      this.buildUrl('announces/' + announce._id),
+      announce,
+      {
+        headers: this.buildHeader(this.token)
+      }
+    );
+  }
+
   handleError(err) {
     if (err.error instanceof Error) {
         console.log(`Client side Error: ${ err.error.message }`);

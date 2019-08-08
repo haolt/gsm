@@ -23,8 +23,7 @@ export class AnnounceEditComponent implements OnInit {
   public decoupledEditor = DecoupledEditor;
 
   // Check Division
-  public checklist: any;
-  public checkedList: any;
+  public hasSelectAll: boolean;
 
   @Output() closeFormEventEmitter = new EventEmitter();
   constructor(
@@ -37,14 +36,18 @@ export class AnnounceEditComponent implements OnInit {
       return div;
     });
     this.initNewAnnounceForm();
-    console.log(this.announce);
     const arrdivisions = this.announce.assignTo;
     arrdivisions.forEach((division) => {
       const selectedDivision = this.allDivisions.filter(div => div._id === division._id)[0];
       selectedDivision.isSelected = true;
     });
+    this.checkStatusCheckAll();
+  }
 
-    console.log(this.allDivisions);
+  private checkStatusCheckAll() {
+    this.hasSelectAll = this.allDivisions.every( (item) => {
+      return item.isSelected === true;
+    });
   }
 
   public onReady( editor ) {
@@ -70,9 +73,12 @@ export class AnnounceEditComponent implements OnInit {
   }
 
   public onEditAnnounce() {
-    // this.getCheckedItemList();
-    this.emitValueToOutside(this.announce._id, null);
-    console.log(this.editAnnounce.value);
+    this.editAnnounce.value.assignTo = this.allDivisions.filter(div => div.isSelected === true);
+    this.editAnnounce.value._id = this.announce._id;
+    this.announceService.updateAnAnnounce(this.editAnnounce.value).subscribe(
+      data => this.emitValueToOutside(this.announce._id, this.editAnnounce.value),
+      errors => this.announceService.handleError(errors)
+    );
   }
 
   closeEditForm() {
@@ -82,32 +88,17 @@ export class AnnounceEditComponent implements OnInit {
   private emitValueToOutside(id: string, editedAnnounce: boolean) {
     this.closeFormEventEmitter.emit({id, editedAnnounce});
   }
-  // checkUncheckAll() {
-  //   this.allDivisions = this.allDivisions.map((item) => {
-  //     item.isSelected = this.editAnnounce.value.masterSelected;
-  //     return item;
-  //   });
-  //   this.getCheckedItemList();
-  // }
 
-  // isAllSelected(id) {
+  onChangeCheckBoxDivision(id) {
+    const changedDivision = this.allDivisions.filter(div => div._id === id)[0];
+    changedDivision.isSelected = !changedDivision.isSelected;
+    this.checkStatusCheckAll();
+  }
 
-  //   const changedDivision = this.allDivisions.filter((div) => div._id === id)[0];
-  //   changedDivision.isSelected = !changedDivision.isSelected;
-
-  //   this.editAnnounce.value.masterSelected = this.allDivisions.every( (item) => {
-  //       return item.isSelected === true;
-  //   });
-  //   this.getCheckedItemList();
-  // }
-
-  // getCheckedItemList() {
-  //   this.editAnnounce.value.assignTo = [];
-  //   this.allDivisions.forEach((item) => {
-  //     if (item.isSelected) {
-  //       this.editAnnounce.value.assignTo.push(item);
-  //     }
-  //   });
-  // }
-
+  onChangeCheckBoxAllDivision() {
+    this.allDivisions.forEach(division => {
+      division.isSelected = !this.hasSelectAll;
+    });
+    this.checkStatusCheckAll();
+  }
 }
