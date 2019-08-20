@@ -49,6 +49,7 @@ export class AnnounceComponent implements OnInit, OnDestroy {
           announce.isDeleteable = false;
         });
         this.getParamsToFilter();
+        console.log('All Announces', this.allAnnounces);
       },
       (errs) => {
         this.allAnnounces = [];
