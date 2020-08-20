@@ -24,7 +24,7 @@
     "@ckeditor/ckeditor5-build-decoupled-document": "^12.3.1",
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.16.1",
     "core-js": "^2.5.4",
